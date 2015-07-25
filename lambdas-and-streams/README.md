@@ -8,7 +8,7 @@ Here I'll take some notes about [Lambdas and Streams Introduction](https://apexa
 * [Lesson 1 - Lambda Expressions](#lesson-1---lambda-expressions)
 * [Lesson 2 - Lambda Expression Syntax](#lesson-2---lambda-expression-syntax)
 * [Lesson 3 - Functional Interfaces And Their Definition](#lesson-3---functional-interfaces-and-their-definition)
-* [Lesson 4 - Functional Interfaces in the java.util.function Package](#lesson-4---functional-interfaces-in-the-java-util-function-package)
+* [Lesson 4 - Functional Interfaces in the java.util.function Package](#lesson-4---functional-interfaces-in-the-javautilfunction-package)
 * [Lesson 5 - Method and Constructor References](#lesson-5---method-and-constructor-references)
 * [Lesson 6 - Referencing External Variables in Lambda Expressions](#lesson-6---referencing-external-variables-in-lambda-expressions)
 * [Lesson 7 - Useful New Methods In JDK 8 That Can Use Lambdas](#lesson-7---useful-new-methods-in-jdk-8-that-can-use-lambdas)
