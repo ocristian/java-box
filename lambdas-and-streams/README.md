@@ -1,7 +1,7 @@
 
 #JDK 8 MOOC Functional Programming in Java with Lambdas and Streams
 
-Here I'll take some notes about [Lambdas and Streams Introduction](https://apexapps.oracle.com/pls/apex/f?p=44785:141:105593264740337::NO::P141_PAGE_ID,P141_SECTION_ID:250,1807) the online course provided by Simon Ritter @speakjava  
+Here I'll take some notes about [Lambdas and Streams Introduction](https://apexapps.oracle.com/pls/apex/f?p=44785:141:105593264740337::NO::P141_PAGE_ID,P141_SECTION_ID:250,1807) the online course provided by Simon Ritter @speakjava 
 
 
 ##Lambdas
@@ -50,34 +50,29 @@ Single line Lambdas
 Ex:
 			
 ```java
+
 () -> System.ou.println("Lambda in single line")
+
+x -> x + 10
+
+(int x, int y) -> { return x + y; }
+
+//multiple lines
+(String x) -> {
+	listA.add(x);
+	listB.remove(x);
+	return listB.size();
+}
 ```
 
+Type Inference 
+page 4
 
+method definition
+static T process(List<T> l, Comparator<T> c)			
 
-
-* () -> System.ou.println("Lambda in single line")
-* x -> x + 10
-* (int x, int y) -> { return x + y; }
-* multiple lines
-
-```java
-	(String x) -> {
-		listA.add(x);
-		listB.remove(x);
-		return listB.size();
-	}
-```
-
-
-		Type Inference 
-		page 4
-
-			method definition
-			static T process(List<T> l, Comparator<T> c)			
-
-			- Brackets and braces are optional for certain situations in single statements
-			- remains strongly, statically typed
+- Brackets and braces are optional for certain situations in single statements
+- remains strongly, statically typed
 
 
 
