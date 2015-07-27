@@ -73,48 +73,45 @@ static T process(List<T> l, Comparator<T> c)
 - Brackets and braces are optional for certain situations in single statements
 - remains strongly, statically typed
 
-
-
-
 ### Lesson 3 - Functional Interfaces And Their Definition
 
-	https://youtu.be/oV6nNR6im6o
+https://youtu.be/oV6nNR6im6o
 
-	Functional Interfaces and Their Definition
+Functional Interfaces and Their Definition
 
-		There is a single abstract method
+There is a single abstract method
 
-		is a Interface
-		before jdk8
-			has _only one_ abstract method
-		after jdk8
-			introduced _default_ methods
-			allows static methods in interfaces
+is a Interface
+before jdk8
+has _only one_ abstract method
+after jdk8
+introduced _default_ methods
+allows static methods in interfaces
 
-		Examples:
-		
-		```java
-			interface FileFilter { boolean accept(File x);}	
-			interface ActionListner { void actionPerformed(...);}
-			interface Callable<T> { T call(); }
-		```	
+Examples:
 
-			* equals(Object obj) is implicit from the Object class
+```java
+interface FileFilter { boolean accept(File x);}	
+interface ActionListner { void actionPerformed(...);}
+interface Callable<T> { T call(); }
+```	
+
+* equals(Object obj) is implicit from the Object class
 
 
-		Examples of Use Lambda Expressions (that can be used anywhere the type is a functional interface)
+Examples of Use Lambda Expressions (that can be used anywhere the type is a functional interface)
 
-			Variable assignement
+Variable assignement
 
-				```java
-					Callable c = () -> process();
-				```	
+```java
+Callable c = () -> process();
+```	
 
-			Methos parameter
+Methos parameter
 
-				```java	
-					new Thread( () -> process() ).start();
-				```	
+```java	
+new Thread( () -> process() ).start();
+```	
 
 
 
