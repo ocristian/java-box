@@ -118,253 +118,251 @@ new Thread( () -> process() ).start();
 
 ### Lesson 4 - Functional Interfaces in the java.util.function Package
 
-	https://youtu.be/kKFD9fwcmtk
+https://youtu.be/kKFD9fwcmtk
 
-	Functional Interfaces int the java.util.function Package
+Functional Interfaces int the java.util.function Package
 
-		Provides a range of functional interfaces
-		Used extensively in Streams
-		You will need to define your own extensions to the finction package
+Provides a range of functional interfaces
+Used extensively in Streams
+You will need to define your own extensions to the finction package
 
-		- Generic Interfaces
+- Generic Interfaces
 
-			Consumer<T>
+Consumer<T>
 
-				Operation that takes a single value and returns no result
+Operation that takes a single value and returns no result
 
-				```java
-					String s -> System.out.println(s)
-				```	
+```java
+	String s -> System.out.println(s)
+```	
 
-			BiConsumer<T, U>
+BiConsumer<T, U>
 
-				Operation that takes TWO value and returns no result	
+Operation that takes TWO value and returns no result	
 
-				```java
-					(k, v) -> System.out.println("Key: " + k + ", value: " + v);
-				```	
-
-
-			Supplier
-
-				A Supplier of Results, the oposite of Consumer
-
-				```java
-					() -> createLogMessage()
-				```	
+```java
+	(k, v) -> System.out.println("Key: " + k + ", value: " + v);
+```	
 
 
-			Function<T, R>
-			
-				Accepts one argument and returns a result
+Supplier
 
-				Type of argument and result may be different
-				Useful static method for composing. Ex.: compose and andThen
+A Supplier of Results, the oposite of Consumer
 
-				Student s -> s.getName()
+```java
+	() -> createLogMessage()
+```	
 
-			Function<T, U, R> accepts two arguments and returns a result. Types can be different.
-				
-				(String name, Student s) -> new Teacher(name, student)
+Function<T, R>
 
-			UnaryOperator<T>
-			
-				Specialized form of funcion
-				Single argument and result of the same type
+Accepts one argument and returns a result
 
-					- T apply(T a)
+Type of argument and result may be different
+Useful static method for composing. Ex.: compose and andThen
 
-						String s -> s.toLowerCase()	
+Student s -> s.getName()
 
-			BinaryOperator<T>
-			
-				Specialized form of Bifuncion
-				Two arguments and a result all of the same type
+Function<T, U, R> accepts two arguments and returns a result. Types can be different.
 
-				```java
+(String name, Student s) -> new Teacher(name, student)
 
-					- T apply(T a, T b)
+UnaryOperator<T>
 
-						(String a, String x) -> {
-							if ( x.length() > y.length) ) 
-								return x;
-							return y;	
-						}
-				```		
+Specialized form of funcion
+Single argument and result of the same type
+
+- T apply(T a)
+
+String s -> s.toLowerCase()	
+
+BinaryOperator<T>
+
+Specialized form of Bifuncion
+Two arguments and a result all of the same type
+
+```java
+
+- T apply(T a, T b)
+
+	(String a, String x) -> {
+		if ( x.length() > y.length) ) 
+			return x;
+		return y;	
+	}
+```		
 
 
-			Predicate
-				
-				A Boolean valued Function of one Argument
+Predicate
 
-				BiPredicate	
-					A Boolean valued Function of two Argument
+A Boolean valued Function of one Argument
 
-				useful default and static methods for combination
-					- and(), or(), negate(), isEqual()
+BiPredicate	
+A Boolean valued Function of two Argument
 
-				Student s -> s.graduationYear() == 2011
+useful default and static methods for combination
+- and(), or(), negate(), isEqual()
+
+Student s -> s.graduationYear() == 2011
 				
 
 
 
 ### Lesson 5 - Method and Constructor References
 
-	https://youtu.be/CURWqa7KWDk
+https://youtu.be/CURWqa7KWDk
 
-	Method and Constructor References
+Method and Constructor References
 
-		Method References
-			let us a reuse a method as a lambda expression
-			Format: target_reference::methos_name
-			Three kinds of methos reference
-				- Static method
-				- Instance method of arbitary method
-				- Instance method of an existing object 
+Method References
+let us a reuse a method as a lambda expression
+Format: target_reference::methos_name
+Three kinds of methos reference
 
-			FileFilter x = File f -> f.canRead();
+- Static method
+- Instance method of arbitary method
+- Instance method of an existing object 
 
-			FileFilter x = File::canRead;
+FileFilter x = File f -> f.canRead();
 
-			Rules for Construction
+FileFilter x = File::canRead;
+
+Rules for Construction
 			
-				Lambda				( args ) -> ClassName.staticMethod(args)
-				Method References				ClassName::staticMethod(args)
+	Lambda				( args ) -> ClassName.staticMethod(args)
+	Method References				ClassName::staticMethod(args)
 
-				Lambda				( arg0, rest ) -> arg0.instanceMethod(rest)
-										instanceOf	
-				Method References				ClassName::instanceMethod
+	Lambda				( arg0, rest ) -> arg0.instanceMethod(rest)
+							instanceOf	
+	Method References				ClassName::instanceMethod
 
-				Lambda				( args ) -> expr.instanceMethod(args)
-				Method References				expr::instanceMethod
+	Lambda				( args ) -> expr.instanceMethod(args)
+	Method References				expr::instanceMethod
 
-				
-				Examples:
-				
-				Lambda				( String s ) -> System.out.println(s)
-				Method References				System.out::println
+	
+	Examples:
+	
+	Lambda				( String s ) -> System.out.println(s)
+	Method References				System.out::println
 
-				Lambda				( String s, int i ) -> s.substring(i)
-				Method References				String::substring
+	Lambda				( String s, int i ) -> s.substring(i)
+	Method References				String::substring
 
-				Lambda				 Axis a -> getLength(a)
-				Method References				this::getLength
+	Lambda				 Axis a -> getLength(a)
+	Method References				this::getLength
 
 
-		Contructor Reference		
+Contructor Reference		
 
-			Same concept as a Method Reference
-				- For the constructor
+Same concept as a Method Reference
+- For the constructor
 
-			```java	
+```java	
 
-			Factory <List<String>> f = () -> return new ArrayList<String>();
-			
-			Factory <List<String>> f = 	ArrayList<String>()::new;
-			```
+Factory <List<String>> f = () -> return new ArrayList<String>();
+
+Factory <List<String>> f = 	ArrayList<String>()::new;
+```
 
 
 
 
 ### Lesson 6 - Referencing External Variables in Lambda Expressions
-
-	https://youtu.be/sciFQ_s4cQU
-
-
-		Referencing External Variables in Lambda Exprecions
-
-		Local Variable Capture
-
-			Efectivelly final, a variable that meets the requirements for final variables
-			Closure on values, not on variables
-
-			void expire(File root, long before){
-				root.lisfFiles(File f -> f.lastModified <= before)
-			}
-
-		What does "this" mean in a Lambda 	
-
-			- "this" referes to the enclosing object, not the lambda itself
-			- Thinf of "this" as final predefined local
-			- Remmember the Lambda is an ANNONYMOUS FUNCTION
-				- its not associate with class
-				- Therefore there can be on "this" for the Lambda
+https://youtu.be/sciFQ_s4cQU
 
 
-		Referencing Instance Variable
-			
-			Which are not final, or effectively final
+Referencing External Variables in Lambda Exprecions
 
-			```java
-			
-			class DataProcessor{
-				private int currentValue;
+Local Variable Capture
 
-				public void process(){
-					DataSet myData = myFactory.getDataSet();
-					dataSet.forEach( d -> d.use( currentValue++ ) );
-				}
-			}
-			```		
+	Efectivelly final, a variable that meets the requirements for final variables
+	Closure on values, not on variables
+
+	```java
+		void expire(File root, long before){
+			root.lisfFiles(File f -> f.lastModified <= before)
+		}
+	```	
+
+What does "this" mean in a Lambda 	
+
+	- "this" referes to the enclosing object, not the lambda itself
+	- Thinf of "this" as final predefined local
+	- Remmember the Lambda is an ANNONYMOUS FUNCTION
+		- its not associate with class
+		- Therefore there can be on "this" for the Lambda
 
 
+Referencing Instance Variable
+	
+	Which are not final, or effectively final
 
+	```java
+	
+	class DataProcessor{
+		private int currentValue;
+
+		public void process(){
+			DataSet myData = myFactory.getDataSet();
+			dataSet.forEach( d -> d.use( currentValue++ ) );
+		}
+	}
+	```		
 
 ### Lesson 7 - Useful New Methods In JDK 8 That Can Use Lambdas
 
-	https://youtu.be/olKF7VpJMfg
+https://youtu.be/olKF7VpJMfg
 
-		Useful New Methods in JDK 8 That can use Lambda
+Useful New Methods in JDK 8 That can use Lambda
 
-		Iterable Interface
+Iterable Interface
 
-			Itarable.forEach(Consumer c)
-
-
-			List<String> myList = ...
-			myList.forEach(s -> System.out.println(s));
-
-			-- simplefied form, method reference
-			myList.forEach(s -> System.out::println);
-
-		Collection Interface
-		
-			Collection.removeIf(Predicate p)
-
-			List<String> myList = ...
-			myList.removeIf(s -> s.length() == 0);
+	Itarable.forEach(Consumer c)
 
 
-		List Interface
+	List<String> myList = ...
+	myList.forEach(s -> System.out.println(s));
 
-			List.replaceAll(UnaryOperator o)
+	-- simplefied form, method reference
+	myList.forEach(s -> System.out::println);
 
-			List<String> myList = ...
-			myList.replaceAll(s -> s.toUpperCase());
+Collection Interface
 
-			myList.replaceAll(String::toUpperCase);
+	Collection.removeIf(Predicate p)
+
+	List<String> myList = ...
+	myList.removeIf(s -> s.length() == 0);
 
 
-			List.sort(Comparator c)
-				Replaces Collections.sort(List l, Comparator c)
+List Interface
 
-			List<String> myList = ...
-			myList.sort( (x, y) -> x.length() - y.length() );
+	List.replaceAll(UnaryOperator o)
 
-		
-		Logger Class
-			
-			logger.finest(createComplexMessage());
+	List<String> myList = ...
+	myList.replaceAll(s -> s.toUpperCase());
 
-			New Methos in Logger Class
+	myList.replaceAll(String::toUpperCase);
 
-				- Takes a Supplier as an argument ( which is a functional interface )
 
-			Simple change to code has big impact on performance
-						
-				logger.finest( () -> createComplexMessage());
+	List.sort(Comparator c)
+		Replaces Collections.sort(List l, Comparator c)
 
-			We now pass HOW to create the message, not the actual message
+	List<String> myList = ...
+	myList.sort( (x, y) -> x.length() - y.length() );
+
+
+Logger Class
+	
+	logger.finest(createComplexMessage());
+
+	New Methos in Logger Class
+
+		- Takes a Supplier as an argument ( which is a functional interface )
+
+	Simple change to code has big impact on performance
+				
+		logger.finest( () -> createComplexMessage());
+
+	We now pass HOW to create the message, not the actual message
 
 
 
