@@ -43,12 +43,11 @@ Lambda Expressions are Anonymous Functions
 ( parameters ) -> { lambda-body }
 ```
 
-Single line Lambdas	
+Single line Lambdas
+
 	- Do not need braces
 	- do need an explicit return statement
 
-Ex:
-			
 ```java
 
 () -> System.ou.println("Lambda in single line")
@@ -93,9 +92,11 @@ static T process(List<T> l, Comparator<T> c)
 
 		Examples:
 		
+		```java
 			interface FileFilter { boolean accept(File x);}	
 			interface ActionListner { void actionPerformed(...);}
 			interface Callable<T> { T call(); }
+		```	
 
 			* equals(Object obj) is implicit from the Object class
 
@@ -104,11 +105,15 @@ static T process(List<T> l, Comparator<T> c)
 
 			Variable assignement
 
+				```java
 					Callable c = () -> process();
+				```	
 
 			Methos parameter
 
+				```java	
 					new Thread( () -> process() ).start();
+				```	
 
 
 
@@ -127,19 +132,27 @@ static T process(List<T> l, Comparator<T> c)
 			Consumer<T>
 
 				Operation that takes a single value and returns no result
-				String s -> System.out.println(s)
+
+				```java
+					String s -> System.out.println(s)
+				```	
 
 			BiConsumer<T, U>
 
 				Operation that takes TWO value and returns no result	
-				(k, v) -> System.out.println("Key: " + k + ", value: " + v);
+
+				```java
+					(k, v) -> System.out.println("Key: " + k + ", value: " + v);
+				```	
 
 
 			Supplier
 
 				A Supplier of Results, the oposite of Consumer
 
+				```java
 					() -> createLogMessage()
+				```	
 
 
 			Function<T, R>
@@ -169,6 +182,8 @@ static T process(List<T> l, Comparator<T> c)
 				Specialized form of Bifuncion
 				Two arguments and a result all of the same type
 
+				```java
+
 					- T apply(T a, T b)
 
 						(String a, String x) -> {
@@ -176,6 +191,7 @@ static T process(List<T> l, Comparator<T> c)
 								return x;
 							return y;	
 						}
+				```		
 
 
 			Predicate
@@ -240,9 +256,12 @@ static T process(List<T> l, Comparator<T> c)
 			Same concept as a Method Reference
 				- For the constructor
 
+			```java	
+
 			Factory <List<String>> f = () -> return new ArrayList<String>();
 			
 			Factory <List<String>> f = 	ArrayList<String>()::new;
+			```
 
 
 
@@ -274,6 +293,8 @@ static T process(List<T> l, Comparator<T> c)
 		Referencing Instance Variable
 			
 			Which are not final, or effectively final
+
+			```java
 			
 			class DataProcessor{
 				private int currentValue;
@@ -282,7 +303,8 @@ static T process(List<T> l, Comparator<T> c)
 					DataSet myData = myFactory.getDataSet();
 					dataSet.forEach( d -> d.use( currentValue++ ) );
 				}
-			}		
+			}
+			```		
 
 
 
@@ -346,29 +368,32 @@ static T process(List<T> l, Comparator<T> c)
 
 	
 
-STREAMS
+##STREAMS
 
-	LESSON 1
-	https://youtu.be/IgQ7yTh5LJY	
+* [Lesson 1 - Introducion to Stream API](#lesson-1---introducion-to-stream-api)
 
-		Introducion to Stream API
 
-			Function Programming Concepts
+### Lesson 1 - Introducion to Stream API
+https://youtu.be/IgQ7yTh5LJY	
 
-				Imperative Programming (Names and Values)
+	Introducion to Stream API
 
-					Use variables as an association between names and values
-					Use sequence of commands
-						Each command consists of an assignment
-						Can change variable's namens 
-						Form is <var_name> = <expression>
-						Expressions can refer to other variables
-						Values can therefore be passed from command to command
-						Commands may repated through loops	
+	Function Programming Concepts
 
-				Functional Programming (Names and Values)
+		Imperative Programming (Names and Values)
 
-					Based on structured function calls
-					Function call which calls other functions in turn (composition)
-						<function1>(<function2>(<function3> ... ) ... )
-						
+			Use variables as an association between names and values
+			Use sequence of commands
+				Each command consists of an assignment
+				Can change variable's namens 
+				Form is <var_name> = <expression>
+				Expressions can refer to other variables
+				Values can therefore be passed from command to command
+				Commands may repated through loops	
+
+		Functional Programming (Names and Values)
+
+			Based on structured function calls
+			Function call which calls other functions in turn (composition)
+				<function1>(<function2>(<function3> ... ) ... )
+				
