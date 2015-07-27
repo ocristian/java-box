@@ -274,30 +274,29 @@ Referencing External Variables in Lambda Exprecions
 
 Local Variable Capture
 
-	Efectivelly final, a variable that meets the requirements for final variables
-	Closure on values, not on variables
+Efectivelly final, a variable that meets the requirements for final variables
+Closure on values, not on variables
 
-	```java
-		void expire(File root, long before){
-			root.lisfFiles(File f -> f.lastModified <= before)
-		}
-	```	
+```java
+	void expire(File root, long before){
+		root.lisfFiles(File f -> f.lastModified <= before)
+	}
+```	
 
 What does "this" mean in a Lambda 	
 
-	- "this" referes to the enclosing object, not the lambda itself
-	- Thinf of "this" as final predefined local
-	- Remmember the Lambda is an ANNONYMOUS FUNCTION
-		- its not associate with class
-		- Therefore there can be on "this" for the Lambda
+- "this" referes to the enclosing object, not the lambda itself
+- Thinf of "this" as final predefined local
+- Remmember the Lambda is an ANNONYMOUS FUNCTION
+	- its not associate with class
+	- Therefore there can be on "this" for the Lambda
 
 
 Referencing Instance Variable
 	
-	Which are not final, or effectively final
+Which are not final, or effectively final
 
-	```java
-	
+```java
 	class DataProcessor{
 		private int currentValue;
 
@@ -306,7 +305,7 @@ Referencing Instance Variable
 			dataSet.forEach( d -> d.use( currentValue++ ) );
 		}
 	}
-	```		
+```		
 
 ### Lesson 7 - Useful New Methods In JDK 8 That Can Use Lambdas
 
