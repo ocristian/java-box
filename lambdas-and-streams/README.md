@@ -77,6 +77,7 @@ static T process(List<T> l, Comparator<T> c)
 
 
 ### Lesson 3 - Functional Interfaces And Their Definition
+
 	https://youtu.be/oV6nNR6im6o
 
 	Functional Interfaces and Their Definition
@@ -119,6 +120,7 @@ static T process(List<T> l, Comparator<T> c)
 
 
 ### Lesson 4 - Functional Interfaces in the java.util.function Package
+
 	https://youtu.be/kKFD9fwcmtk
 
 	Functional Interfaces int the java.util.function Package
@@ -210,6 +212,7 @@ static T process(List<T> l, Comparator<T> c)
 
 
 ### Lesson 5 - Method and Constructor References
+
 	https://youtu.be/CURWqa7KWDk
 
 	Method and Constructor References
@@ -267,6 +270,7 @@ static T process(List<T> l, Comparator<T> c)
 
 
 ### Lesson 6 - Referencing External Variables in Lambda Expressions
+
 	https://youtu.be/sciFQ_s4cQU
 
 
@@ -310,6 +314,7 @@ static T process(List<T> l, Comparator<T> c)
 
 
 ### Lesson 7 - Useful New Methods In JDK 8 That Can Use Lambdas
+
 	https://youtu.be/olKF7VpJMfg
 
 		Useful New Methods in JDK 8 That can use Lambda
@@ -374,6 +379,7 @@ static T process(List<T> l, Comparator<T> c)
 
 
 ### Lesson 1 - Introducion to Stream API
+
 https://youtu.be/IgQ7yTh5LJY	
 
 	Introducion to Stream API
