@@ -1,10 +1,10 @@
-
 #JDK 8 MOOC Functional Programming in Java with Lambdas and Streams
 
 Here I'll take some notes about [Lambdas and Streams Introduction](https://apexapps.oracle.com/pls/apex/f?p=44785:141:105593264740337::NO::P141_PAGE_ID,P141_SECTION_ID:250,1807) the online course provided by Simon Ritter @speakjava 
 
 
 ##Lambdas
+
 * [Lesson 1 - Lambda Expressions](#lesson-1---lambda-expressions)
 * [Lesson 2 - Lambda Expression Syntax](#lesson-2---lambda-expression-syntax)
 * [Lesson 3 - Functional Interfaces And Their Definition](#lesson-3---functional-interfaces-and-their-definition)
@@ -14,42 +14,42 @@ Here I'll take some notes about [Lambdas and Streams Introduction](https://apexa
 * [Lesson 7 - Useful New Methods In JDK 8 That Can Use Lambdas](#lesson-7---useful-new-methods-in-jdk-8-that-can-use-lambdas)
 
 ### Lesson 1 - Lambda Expressions
-https://youtu.be/WXtVHTGDV9g
+see lesson 1 on [Youtube](https://youtu.be/WXtVHTGDV9g)
 	
 ### Lesson 2 - Lambda Expression Syntax
-https://youtu.be/DD5IKXx4ZPk
+see lesson 2 on [Youtube](https://youtu.be/DD5IKXx4ZPk)
 	
 ##### Lambdas
+
 - to process data
 - to process collection of data
 - to take advantage of multiple cores
 - lambda expressions simplify how to pass behavior as a parameter
 
+######Why Lambda expressions?
+> **To make life easier to write parallel code**
+> 
+> do you remeber concurrency in Java?
+>
+>- 1.0 - Threads
+>- 5.0 - Concurrent
+>- 6.0 - Phasers
+>- 7.0 - Fork/join Framework
+>- 8.0 - Lambda
 
-Why Lambda expressions?
-		
-To make life easier to write parallel code
 
-Concurrency in Java:
-- 1.0 - Threads
-- 5.0 - Concurrent
-- 6.0 - Phasers
-- 7.0 - Fork/join Framework
-- 8.0 - Lambda
-
-Lambda Expressions are Anonymous Functions
+######Lambda Expressions are Anonymous Functions
+> brackets and braces are optional for certain situations in single statements
 
 ```java
 ( parameters ) -> { lambda-body }
 ```
 
-Single line Lambdas
-
-	- Do not need braces
-	- do need an explicit return statement
+######Single line Lambdas
+- do not need braces
+- do need an explicit return statement
 
 ```java
-
 () -> System.ou.println("Lambda in single line")
 
 x -> x + 10
@@ -64,14 +64,23 @@ x -> x + 10
 }
 ```
 
-Type Inference 
-page 4
+######Type Inference
+> remains strongly, statically typed
+Method definition:
+```java
+	static T process(List<T> l, Comparator<T> c)
+```
 
-method definition
-static T process(List<T> l, Comparator<T> c)			
+Use the method:
+```java
+	List<String> list = getList();
+	process(list, (String x, String y) -> x.length() – y.length());
+```
 
-- Brackets and braces are optional for certain situations in single statements
-- remains strongly, statically typed
+Compiler smarter:
+```java
+	String r = process(list, (x, y) -> x.length() – y.length())
+```
 
 ### Lesson 3 - Functional Interfaces And Their Definition
 
