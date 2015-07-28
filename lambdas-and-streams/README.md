@@ -141,7 +141,9 @@ new Thread( () -> process() ).start();
 see lesson 4 on [Youtube](https://youtu.be/kKFD9fwcmtk)
 
 > Provides a range of functional interfaces
+> 
 > Used extensively in Streams
+> 
 > You will need to define your own extensions to the function package
 
 #####Generic Interfaces
