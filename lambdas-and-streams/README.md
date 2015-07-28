@@ -222,7 +222,7 @@ useful default and static methods for combination
 
 
 ### Lesson 5 - Method and Constructor References
-see lesson 4 on [Youtube](https://youtu.be/CURWqa7KWDk)
+see lesson 5 on [Youtube](https://youtu.be/CURWqa7KWDk)
 
 Method References
 let us a reuse a method as a lambda expression
