@@ -84,53 +84,60 @@ Compiler smarter:
 ```
 
 ### Lesson 3 - Functional Interfaces And Their Definition
+see lesson 2 on [Youtube](https://youtu.be/oV6nNR6im6o)
 
-https://youtu.be/oV6nNR6im6o
+> **There is a single abstract method**
+> **The Lambda Expression provides the implementation of the abstract method**
 
-Functional Interfaces and Their Definition
+- is an Interface
+- **has only one abstract method**
+- before jdk8, obvious, only one method
+- after jdk8, introduced _default_ methods and allows static methods in interfaces
+ - allows multiple **inheritance of _behavior_** for java
+- New annotation @FunctionalInterface
+ - informative, used to indicate that an interface is intended to be a functional interface. see [java doc](https://docs.oracle.com/javase/8/docs/api/java/lang/FunctionalInterface.html) for more info.   
 
-There is a single abstract method
-
-is a Interface
-before jdk8
-has _only one_ abstract method
-after jdk8
-introduced _default_ methods
-allows static methods in interfaces
-
-Examples:
+######Examples of Functional Interfaces
 
 ```java
 interface FileFilter { boolean accept(File x);}	
 interface ActionListner { void actionPerformed(...);}
 interface Callable<T> { T call(); }
-```	
+```
 
-* equals(Object obj) is implicit from the Object class
+**Is this a Functional Interface?**
+```java
+	@FunctionalInterface
+	public interface Comparator {
+	   // static and default methods
+	  int compare(T o1, T o2);
+	  boolean equals(Object obj);
+	}
+```
+**Yes**, because: 
+```java
+	equals(Object obj) //is implicit from the Object class
+```
+and:
+```java
+	int compare(T o1, T o2); //is the only one abstract method
+```
 
 
-Examples of Use Lambda Expressions (that can be used anywhere the type is a functional interface)
+######Examples of Use Lambda Expressions
+> can be used anywhere the type is a functional interface
 
-Variable assignement
-
+- Variable assignement
 ```java
 Callable c = () -> process();
-```	
-
-Methos parameter
-
+```
+- Methos parameter
 ```java	
 new Thread( () -> process() ).start();
-```	
-
-
-
+```
 
 ### Lesson 4 - Functional Interfaces in the java.util.function Package
-
-https://youtu.be/kKFD9fwcmtk
-
-Functional Interfaces int the java.util.function Package
+see lesson 2 on [Youtube](https://youtu.be/kKFD9fwcmtk)
 
 Provides a range of functional interfaces
 Used extensively in Streams
