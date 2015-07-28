@@ -140,66 +140,64 @@ new Thread( () -> process() ).start();
 ### Lesson 4 - Functional Interfaces in the java.util.function Package
 see lesson 4 on [Youtube](https://youtu.be/kKFD9fwcmtk)
 
-Provides a range of functional interfaces
-Used extensively in Streams
-You will need to define your own extensions to the finction package
+> Provides a range of functional interfaces
+> Used extensively in Streams
+> You will need to define your own extensions to the function package
 
-- Generic Interfaces
+#####Generic Interfaces
 
-Consumer<T>
-
-Operation that takes a single value and returns no result
+#####Consumer<T>
+> Operation that takes a single value and returns no result
 
 ```java
 	String s -> System.out.println(s)
-```	
+```
 
-BiConsumer<T, U>
-
-Operation that takes TWO value and returns no result	
+#####BiConsumer<T, U>
+> Operation that takes TWO values and returns no result	
 
 ```java
 	(k, v) -> System.out.println("Key: " + k + ", value: " + v);
-```	
+```
 
-
-Supplier
-
-A Supplier of Results, the oposite of Consumer
+#####Supplier
+> A Supplier of Results, the oposite of Consumer
 
 ```java
 	() -> createLogMessage()
-```	
+```
 
-Function<T, R>
-
-Accepts one argument and returns a result
+#####Function<T, R>
+> Accepts one argument and returns a result
 
 Type of argument and result may be different
 Useful static method for composing. Ex.: compose and andThen
 
-Student s -> s.getName()
+```java
+	Student s -> s.getName()
+```
 
-Function<T, U, R> accepts two arguments and returns a result. Types can be different.
-
-(String name, Student s) -> new Teacher(name, student)
-
-UnaryOperator<T>
-
-Specialized form of funcion
-Single argument and result of the same type
-
-- T apply(T a)
-
-String s -> s.toLowerCase()	
-
-BinaryOperator<T>
-
-Specialized form of Bifuncion
-Two arguments and a result all of the same type
+#####Function<T, U, R>
+> accepts two arguments and returns a result. Types can be different.
 
 ```java
+	(String name, Student s) -> new Teacher(name, student)
+```
 
+#####UnaryOperator<T>
+> Specialized form of funcion
+> Single argument and result of the same type
+
+```java
+	- T apply(T a)
+	String s -> s.toLowerCase()	
+```
+
+#####BinaryOperator<T>
+> Specialized form of Bifuncion
+> Two arguments and a result all of the same type
+
+```java
 - T apply(T a, T b)
 
 	(String a, String x) -> {
@@ -207,29 +205,24 @@ Two arguments and a result all of the same type
 			return x;
 		return y;	
 	}
-```		
+```
 
+#####Predicate
+> A Boolean valued Function of one Argument
 
-Predicate
-
-A Boolean valued Function of one Argument
-
-BiPredicate	
-A Boolean valued Function of two Argument
+#####BiPredicate	
+> A Boolean valued Function of two Argument
 
 useful default and static methods for combination
 - and(), or(), negate(), isEqual()
 
-Student s -> s.graduationYear() == 2011
-				
-
+```java
+	Student s -> s.graduationYear() == 2011
+```
 
 
 ### Lesson 5 - Method and Constructor References
-
-https://youtu.be/CURWqa7KWDk
-
-Method and Constructor References
+see lesson 4 on [Youtube](https://youtu.be/CURWqa7KWDk)
 
 Method References
 let us a reuse a method as a lambda expression
