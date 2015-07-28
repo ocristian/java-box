@@ -84,9 +84,10 @@ Compiler smarter:
 ```
 
 ### Lesson 3 - Functional Interfaces And Their Definition
-see lesson 2 on [Youtube](https://youtu.be/oV6nNR6im6o)
+see lesson 3 on [Youtube](https://youtu.be/oV6nNR6im6o)
 
 > **There is a single abstract method**
+> 
 > **The Lambda Expression provides the implementation of the abstract method**
 
 - is an Interface
@@ -114,7 +115,7 @@ interface Callable<T> { T call(); }
 	  boolean equals(Object obj);
 	}
 ```
-**Yes**, because: 
+**Yes**, it is because: 
 ```java
 	equals(Object obj) //is implicit from the Object class
 ```
@@ -137,7 +138,7 @@ new Thread( () -> process() ).start();
 ```
 
 ### Lesson 4 - Functional Interfaces in the java.util.function Package
-see lesson 2 on [Youtube](https://youtu.be/kKFD9fwcmtk)
+see lesson 4 on [Youtube](https://youtu.be/kKFD9fwcmtk)
 
 Provides a range of functional interfaces
 Used extensively in Streams
