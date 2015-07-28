@@ -47,7 +47,7 @@ see lesson 2 on [Youtube](https://youtu.be/DD5IKXx4ZPk)
 
 ######Single line Lambdas
 - do not need braces
-- do need an explicit return statement
+- do not need an explicit return statement
 
 ```java
 () -> System.ou.println("Lambda in single line")
