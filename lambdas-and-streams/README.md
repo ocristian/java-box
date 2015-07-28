@@ -66,6 +66,7 @@ x -> x + 10
 
 ######Type Inference
 > remains strongly, statically typed
+
 Method definition:
 ```java
 	static T process(List<T> l, Comparator<T> c)
