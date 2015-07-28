@@ -173,6 +173,7 @@ see lesson 4 on [Youtube](https://youtu.be/kKFD9fwcmtk)
 > Accepts one argument and returns a result
 
 Type of argument and result may be different
+
 Useful static method for composing. Ex.: compose and andThen
 
 ```java
