@@ -227,7 +227,7 @@ useful default and static methods for combination
 ### Lesson 5 - Method and Constructor References
 see lesson 5 on [Youtube](https://youtu.be/CURWqa7KWDk)
 
-Method References
+#####Method References
 let us a reuse a method as a lambda expression
 Format: target_reference::methos_name
 Three kinds of methos reference
@@ -236,9 +236,11 @@ Three kinds of methos reference
 - Instance method of arbitary method
 - Instance method of an existing object 
 
-FileFilter x = File f -> f.canRead();
+```java
+	FileFilter x = File f -> f.canRead();
 
-FileFilter x = File::canRead;
+	FileFilter x = File::canRead;
+```
 
 Rules for Construction
 			
@@ -254,7 +256,6 @@ Rules for Construction
 
 	
 	Examples:
-	
 	Lambda				( String s ) -> System.out.println(s)
 	Method References				System.out::println
 
@@ -265,28 +266,21 @@ Rules for Construction
 	Method References				this::getLength
 
 
-Contructor Reference		
+#####Contructor Reference		
 
 Same concept as a Method Reference
 - For the constructor
 
 ```java	
+	Factory <List<String>> f = () -> return new ArrayList<String>();
 
-Factory <List<String>> f = () -> return new ArrayList<String>();
-
-Factory <List<String>> f = 	ArrayList<String>()::new;
+	Factory <List<String>> f = 	ArrayList<String>()::new;
 ```
 
-
-
-
 ### Lesson 6 - Referencing External Variables in Lambda Expressions
-https://youtu.be/sciFQ_s4cQU
+see lesson 6 on [Youtube](https://youtu.be/sciFQ_s4cQU)
 
-
-Referencing External Variables in Lambda Exprecions
-
-Local Variable Capture
+#####Local Variable Capture
 
 Efectivelly final, a variable that meets the requirements for final variables
 Closure on values, not on variables
@@ -295,7 +289,7 @@ Closure on values, not on variables
 	void expire(File root, long before){
 		root.lisfFiles(File f -> f.lastModified <= before)
 	}
-```	
+```
 
 What does "this" mean in a Lambda 	
 
@@ -305,8 +299,7 @@ What does "this" mean in a Lambda
 	- its not associate with class
 	- Therefore there can be on "this" for the Lambda
 
-
-Referencing Instance Variable
+#####Referencing Instance Variable
 	
 Which are not final, or effectively final
 
@@ -319,35 +312,37 @@ Which are not final, or effectively final
 			dataSet.forEach( d -> d.use( currentValue++ ) );
 		}
 	}
-```		
+```
 
 ### Lesson 7 - Useful New Methods In JDK 8 That Can Use Lambdas
-
-https://youtu.be/olKF7VpJMfg
+see lesson 7 on [Youtube](https://youtu.be/olKF7VpJMfg)
 
 Useful New Methods in JDK 8 That can use Lambda
 
-Iterable Interface
+##### Iterable Interface
 
+```java
 	Itarable.forEach(Consumer c)
-
 
 	List<String> myList = ...
 	myList.forEach(s -> System.out.println(s));
 
-	-- simplefied form, method reference
+	//simplefied form, method reference
 	myList.forEach(s -> System.out::println);
+```
 
-Collection Interface
+##### Collection Interface
 
+```java
 	Collection.removeIf(Predicate p)
 
 	List<String> myList = ...
 	myList.removeIf(s -> s.length() == 0);
+```
 
+##### List Interface
 
-List Interface
-
+```java
 	List.replaceAll(UnaryOperator o)
 
 	List<String> myList = ...
@@ -355,17 +350,18 @@ List Interface
 
 	myList.replaceAll(String::toUpperCase);
 
-
 	List.sort(Comparator c)
 		Replaces Collections.sort(List l, Comparator c)
 
 	List<String> myList = ...
 	myList.sort( (x, y) -> x.length() - y.length() );
+```
 
+##### Logger Class
 
-Logger Class
-	
+```java
 	logger.finest(createComplexMessage());
+```
 
 	New Methos in Logger Class
 
@@ -373,41 +369,143 @@ Logger Class
 
 	Simple change to code has big impact on performance
 				
-		logger.finest( () -> createComplexMessage());
+```java
+	logger.finest( () -> createComplexMessage());
+```
 
-	We now pass HOW to create the message, not the actual message
+We now pass HOW to create the message, not the actual message
 
-
-
-	
 
 ##STREAMS
 
-* [Lesson 1 - Introducion to Stream API](#lesson-1---introducion-to-stream-api)
+* [Lesson 2.1 - Introducion to Stream API](#lesson-2.1---introducion-to-stream-api)
+
+#####STREAMS
 
 
-### Lesson 1 - Introducion to Stream API
+### Lesson 2.1 - Introducion to Stream API
+see lesson 2.1 on [Youtube](https://youtu.be/IgQ7yTh5LJY)
 
-https://youtu.be/IgQ7yTh5LJY	
+> intention: replace loops for aggregate operations
 
-	Introducion to Stream API
-
-	Function Programming Concepts
+##### Function Programming Concepts
 
 		Imperative Programming (Names and Values)
+		> The same name may be associated with different values
 
-			Use variables as an association between names and values
+			Use variables to provide an association between names and values
 			Use sequence of commands
 				Each command consists of an assignment
-				Can change variable's namens 
+				Can change variable's value 
 				Form is <var_name> = <expression>
 				Expressions can refer to other variables
 				Values can therefore be passed from command to command
-				Commands may repated through loops	
+				Commands may be repated through loops	
 
 		Functional Programming (Names and Values)
+		> A name is only ever associated with one value
 
 			Based on structured function calls
 			Function call which calls other functions in turn (composition)
+			```java
 				<function1>(<function2>(<function3> ... ) ... )
+			```
+			Each function receive values from and passes values back the calling function
+			Names are only used as formal parameters, once value is assigned it can be changed
+			No concept of a command, as used in imperative code, therefore no concept of repetition
+
+##### Execution Order			
+
+		Imperative
+			values associated with names can be changed
+			the order of execution of commands forms a contrat, if it's changed, the behavior of app may change
+		
+		Functional
+			values associated with names can not be changed
+			the order of execution does not impact the results
+			there is no fixed execution order
+
+##### Repetition
+		
+		Imperative
+			values associated with names may be changed by commands
+			commands may be repeated leading to repeated changes
+			new values may be associated with the same name through repetition (loops)
+		
+		Functional
+			values associated with names may not be changed
+			repeated changes are achieved by nested function calls
+			new values may be associated with the same name through recursion
+
+##### Functions as Values
+
+		lambda expressions allows functions to be trated as values
+		make this much simpler than anonymous inner classes
+
+### Lesson 2.2 - Elements of Stream
+see lesson 2.2 on [Youtube](https://youtu.be/J4clzago_IM)
+
+##### Stream Overview
+
+	Abstraction for specifying aggregate computations
+		- not a data structure
+		- can be infinite
+		- there is no concept of a loop, is not possible to break out the stream
+
+	Simplifying the description of aggregate computations
+		expose opportunities for optimization
+		fusing, laziness and parallelism
+
+
+	Think as like a representation of a PIPELINE
+		
+		consists of three types
+		a source
+		zero or more intermediate operations
+		a terminal operation, that produces a result or a side-effect
+
+		```java
+			// stream() is the Source
+			// .filter() and .mapToInt are the intermediate operations
+			// .sum() is the terminal operation
+
+			int total = transactions.stream()
+				.filter(t -> t.getBuyer().getCity.equals("London")) //
+				.mapToInt(Transaction::getPrice)
+				.sum();
+		```
+
+##### Stream Terminal Operations
+	
+	Papeline is only evaluated when the terminal operations is called
+		- all operations can execute sequentially or in parallel
+		- itermediate operatins can be merged
+
+
+
+
+
+
+
+
+
+				 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 				
