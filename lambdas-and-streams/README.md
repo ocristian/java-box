@@ -378,10 +378,10 @@ We now pass HOW to create the message, not the actual message
 
 ##STREAMS
 
-* [Lesson 2.1 - Introducion to Stream API](#lesson-2.1---introducion-to-stream-api)
-* [Lesson 2.2 - Elements of Stream](#lesson-2.2---elements-of-stream)
-* [Lesson 2.3 - Streams of Objects and Primitive Types](#lesson-2.3---streams-of-objects-and-primitive-types)
-* [Lesson 2.4 - Streams Sources in JDK 8](#lesson-2.4---streams-sources-in-jdk-8)
+* [Lesson 2.1 - Introducion to Stream API](#lesson-21---introducion-to-stream-api)
+* [Lesson 2.2 - Elements of Stream](#lesson-22---elements-of-stream)
+* [Lesson 2.3 - Streams of Objects and Primitive Types](#lesson-23---streams-of-objects-and-primitive-types)
+* [Lesson 2.4 - Streams Sources in JDK 8](#lesson-24---streams-sources-in-jdk-8)
 
 #####STREAMS
 
@@ -397,7 +397,7 @@ see lesson 2.1 on [Youtube](https://youtu.be/IgQ7yTh5LJY)
 > > more concise, readable, composable operations, parallelizable
 
 
-##### Function Programming Concepts
+##### Functional Programming Concepts
 
 _Imperative Programming (Names and Values)_
 > The same name may be associated with different values
@@ -406,7 +406,7 @@ _Imperative Programming (Names and Values)_
 - Use sequence of commands
 	+ Each command consists of an assignment
 	+ Can change variable's value 
-	+ Form is <var_name> = <expression>
+	+ Form is _<var_name>_ = _<expression>_
 	+ Expressions can refer to other variables
 	+ Values can therefore be passed from command to command
 	+ Commands may be repated through loops	
@@ -428,22 +428,26 @@ No concept of a command, as used in imperative code, therefore no concept of rep
 ##### Execution Order			
 
 _Imperative_
-	values associated with names can be changed
-	the order of execution of commands forms a contrat, if it's changed, the behavior of app may change
+
+values associated with names can be changed
+the order of execution of commands forms a contrat, if it's changed, the behavior of app may change
 
 _Functional_
-	values associated with names can not be changed
-	the order of execution does not impact the results
-	there is no fixed execution order
+
+values associated with names can not be changed
+the order of execution does not impact the results
+there is no fixed execution order
 
 ##### Repetition
 		
 _Imperative_
+
 values associated with names may be changed by commands
 commands may be repeated leading to repeated changes
 new values may be associated with the same name through repetition (loops)
 		
 _Functional_
+
 values associated with names may not be changed
 repeated changes are achieved by nested function calls
 new values may be associated with the same name through recursion
