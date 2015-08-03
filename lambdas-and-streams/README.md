@@ -379,6 +379,9 @@ We now pass HOW to create the message, not the actual message
 ##STREAMS
 
 * [Lesson 2.1 - Introducion to Stream API](#lesson-2.1---introducion-to-stream-api)
+* [Lesson 2.2 - Elements of Stream](#lesson-2.1---elements-of-stream)
+* [Lesson 2.3 - Streams of Objects and Primitive Types](#lesson-2.1---streams-of-objects-and-primitive-types)
+* [Lesson 2.4 - Streams Sources in JDK 8](#lesson-2.1---streams-sources-in-jdk-8)
 
 #####STREAMS
 
@@ -387,118 +390,125 @@ We now pass HOW to create the message, not the actual message
 see lesson 2.1 on [Youtube](https://youtu.be/IgQ7yTh5LJY)
 
 > bring funcional style to java
+> 
 > exploit hardware parallelism - "explicit but unobstrusive"
+> 
 > intention: replace loops for aggregate operations
 > > more concise, readable, composable operations, parallelizable
 
 
 ##### Function Programming Concepts
 
-		Imperative Programming (Names and Values)
-		> The same name may be associated with different values
+_Imperative Programming (Names and Values)_
+> The same name may be associated with different values
 
-			Use variables to provide an association between names and values
-			Use sequence of commands
-				Each command consists of an assignment
-				Can change variable's value 
-				Form is <var_name> = <expression>
-				Expressions can refer to other variables
-				Values can therefore be passed from command to command
-				Commands may be repated through loops	
+- Use variables to provide an association between names and values
+- Use sequence of commands
+	+ Each command consists of an assignment
+	+ Can change variable's value 
+	+ Form is <var_name> = <expression>
+	+ Expressions can refer to other variables
+	+ Values can therefore be passed from command to command
+	+ Commands may be repated through loops	
 
-		Functional Programming (Names and Values)
-		> A name is only ever associated with one value
+_Functional Programming (Names and Values)_
+> A name is only ever associated with one value
 
-			Based on structured function calls
-			Function call which calls other functions in turn (composition)
-			```java
-				<function1>(<function2>(<function3> ... ) ... )
-			```
-			Each function receive values from and passes values back the calling function
-			Names are only used as formal parameters, once value is assigned it can be changed
-			No concept of a command, as used in imperative code, therefore no concept of repetition
+Based on structured function calls
+Function call which calls other functions in turn (composition)
+
+```java
+	<function1>(<function2>(<function3> ... ) ... )
+```
+
+Each function receive values from and passes values back the calling function
+Names are only used as formal parameters, once value is assigned it can be changed
+No concept of a command, as used in imperative code, therefore no concept of repetition
 
 ##### Execution Order			
 
-		Imperative
-			values associated with names can be changed
-			the order of execution of commands forms a contrat, if it's changed, the behavior of app may change
-		
-		Functional
-			values associated with names can not be changed
-			the order of execution does not impact the results
-			there is no fixed execution order
+_Imperative_
+	values associated with names can be changed
+	the order of execution of commands forms a contrat, if it's changed, the behavior of app may change
+
+_Functional_
+	values associated with names can not be changed
+	the order of execution does not impact the results
+	there is no fixed execution order
 
 ##### Repetition
 		
-		Imperative
-			values associated with names may be changed by commands
-			commands may be repeated leading to repeated changes
-			new values may be associated with the same name through repetition (loops)
+_Imperative_
+values associated with names may be changed by commands
+commands may be repeated leading to repeated changes
+new values may be associated with the same name through repetition (loops)
 		
-		Functional
-			values associated with names may not be changed
-			repeated changes are achieved by nested function calls
-			new values may be associated with the same name through recursion
+_Functional_
+values associated with names may not be changed
+repeated changes are achieved by nested function calls
+new values may be associated with the same name through recursion
 
 ##### Functions as Values
 
-		lambda expressions allows functions to be trated as values
-		make this much simpler than anonymous inner classes
+lambda expressions allows functions to be trated as values
+make this much simpler than anonymous inner classes
 
 ### Lesson 2.2 - Elements of Stream
 see lesson 2.2 on [Youtube](https://youtu.be/J4clzago_IM)
 
 ##### Stream Overview
 
-	Abstraction for specifying aggregate computations
-		- not a data structure
-		- can be infinite
-		- there is no concept of a loop, is not possible to break out the stream
+- Abstraction for specifying aggregate computations
+	+ not a data structure
+	+ can be infinite
+	+ there is no concept of a loop, is not possible to break out the stream
 
-	Simplifying the description of aggregate computations
-		expose opportunities for optimization
-		fusing, laziness and parallelism
-
-
-	Think as like a representation of a PIPELINE
+- Simplifying the description of aggregate computations
+	+ expose opportunities for optimization
+	+ fusing, laziness and parallelism
 		
-		consists of three types
-		a source
-		zero or more intermediate operations
-		a terminal operation, that produces a result or a side-effect
+- Think as like a representation of a PIPELINE
+	+ consists of three types
+		* a source
+		* zero or more intermediate operations
+		* a terminal operation, that produces a result or a side-effect
 
-		```java
-			// stream() is the Source
-			// .filter() and .mapToInt are the intermediate operations
-			// .sum() is the terminal operation
+```java
+	// stream() is the Source
+	// .filter() and .mapToInt are the intermediate operations
+	// .sum() is the terminal operation
 
-			int total = transactions.stream()
-				.filter(t -> t.getBuyer().getCity.equals("London"))
-				.mapToInt(Transaction::getPrice)
-				.sum();
-		```
+	int total = transactions.stream()
+		.filter(t -> t.getBuyer().getCity.equals("London"))
+		.mapToInt(Transaction::getPrice)
+		.sum();
+```
 
 ##### Stream Terminal Operations
-	
-	Papeline is only evaluated when the terminal operations is called
-		- all operations can execute sequentially or in parallel
-		- intermediate operatins can be merged
-		- Stream characteristics help identify optimisations
-			- DISTINCT stream passed to distinct() is a no-op
+
+> Papeline is only evaluated when the terminal operations is called
+
+- all operations can execute sequentially or in parallel
+- intermediate operatins can be merged
+- Stream characteristics help identify optimisations
+	+ DISTINCT stream passed to distinct() is a no-op
 
 ### Lesson 2.3 - Streams of Objects and Primitive Types
 see lesson 2.3 on [Youtube](https://youtu.be/O9tajXDd9IU)
 
 > java language is not truly object oriented
+> 
 > primitive types are included
 > > byte, short, int, long, double, float and char
+> 
 > for more situations these are wrapped as objects
+> 
 > conversion between primitive and object is often handled by auto-boxing and unboxing
 
 ##### Object Stream
 
 > by default, a stream produces elements that are objects
+> 
 > sometimes, this is not be best solution
 
 ```java
@@ -513,6 +523,7 @@ see lesson 2.3 on [Youtube](https://youtu.be/O9tajXDd9IU)
 
 > to avoid a lot of unnecessary object creation we have three primitive stream types
 > > IntStream, DoubleStream and LongStream
+> 
 > these can be used with certain stream operations
 
 ```java
@@ -529,6 +540,7 @@ see lesson 2.4 on [Youtube](https://youtu.be/pbtFL7T_HLw)
 ##### JDK 8 Libraries
 > 95 methods in 23 classes that return a stream
 > > many of them, intermediate operations in the Stream interface
+> 
 > 71 methods in 15 classes can be used as practical Stream sources
 
 ##### Collection Interface
@@ -557,13 +569,14 @@ see lesson 2.4 on [Youtube](https://youtu.be/pbtFL7T_HLw)
 
 ##### Random Numbers
 > generating infinite streams
+
 - three random related classes 
 	+ Random, ThreadLocalRandom and SplittableRandom
 - methods to produce finite or infinite streams of random numbers
 	+ ints(), doubles() and longs()
 	+ four versions of each
-		finite or infinite
-		with and without seed
+		* finite or infinite
+		* with and without seed
 
 ##### Miscellaneous Classes and Methods
 - JarFile/ZipFile: stream()
