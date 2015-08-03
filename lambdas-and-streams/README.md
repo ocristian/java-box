@@ -379,9 +379,9 @@ We now pass HOW to create the message, not the actual message
 ##STREAMS
 
 * [Lesson 2.1 - Introducion to Stream API](#lesson-2.1---introducion-to-stream-api)
-* [Lesson 2.2 - Elements of Stream](#lesson-2.1---elements-of-stream)
-* [Lesson 2.3 - Streams of Objects and Primitive Types](#lesson-2.1---streams-of-objects-and-primitive-types)
-* [Lesson 2.4 - Streams Sources in JDK 8](#lesson-2.1---streams-sources-in-jdk-8)
+* [Lesson 2.2 - Elements of Stream](#lesson-2.2---elements-of-stream)
+* [Lesson 2.3 - Streams of Objects and Primitive Types](#lesson-2.3---streams-of-objects-and-primitive-types)
+* [Lesson 2.4 - Streams Sources in JDK 8](#lesson-2.4---streams-sources-in-jdk-8)
 
 #####STREAMS
 
