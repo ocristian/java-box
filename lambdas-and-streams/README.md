@@ -386,7 +386,11 @@ We now pass HOW to create the message, not the actual message
 ### Lesson 2.1 - Introducion to Stream API
 see lesson 2.1 on [Youtube](https://youtu.be/IgQ7yTh5LJY)
 
+> bring funcional style to java
+> exploit hardware parallelism - "explicit but unobstrusive"
 > intention: replace loops for aggregate operations
+> > more concise, readable, composable operations, parallelizable
+
 
 ##### Function Programming Concepts
 
@@ -470,7 +474,7 @@ see lesson 2.2 on [Youtube](https://youtu.be/J4clzago_IM)
 			// .sum() is the terminal operation
 
 			int total = transactions.stream()
-				.filter(t -> t.getBuyer().getCity.equals("London")) //
+				.filter(t -> t.getBuyer().getCity.equals("London"))
 				.mapToInt(Transaction::getPrice)
 				.sum();
 		```
@@ -479,24 +483,115 @@ see lesson 2.2 on [Youtube](https://youtu.be/J4clzago_IM)
 	
 	Papeline is only evaluated when the terminal operations is called
 		- all operations can execute sequentially or in parallel
-		- itermediate operatins can be merged
+		- intermediate operatins can be merged
+		- Stream characteristics help identify optimisations
+			- DISTINCT stream passed to distinct() is a no-op
+
+### Lesson 2.3 - Streams of Objects and Primitive Types
+see lesson 2.3 on [Youtube](https://youtu.be/O9tajXDd9IU)
+
+> java language is not truly object oriented
+> primitive types are included
+> > byte, short, int, long, double, float and char
+> for more situations these are wrapped as objects
+> conversion between primitive and object is often handled by auto-boxing and unboxing
+
+##### Object Stream
+
+> by default, a stream produces elements that are objects
+> sometimes, this is not be best solution
+
+```java
+	int highScore = students.stream()
+		.filter( s -> s.graduationYear() == 2015 )
+		.map( s -> s.getScore() )
+		.max();
+```
 
 
+##### Primitive Streams
+
+> to avoid a lot of unnecessary object creation we have three primitive stream types
+> > IntStream, DoubleStream and LongStream
+> these can be used with certain stream operations
+
+```java
+	int highScore = students.stream()
+		.filter( s -> s.graduationYear() == 2015 )
+		.mapToInt( s -> s.getScore() ) // with mapToInt, no oxing or unboxing are necessary
+		.max();
+```
 
 
+### Lesson 2.4 - Streams Sources in JDK 8
+see lesson 2.4 on [Youtube](https://youtu.be/pbtFL7T_HLw)
 
+##### JDK 8 Libraries
+> 95 methods in 23 classes that return a stream
+> > many of them, intermediate operations in the Stream interface
+> 71 methods in 15 classes can be used as practical Stream sources
 
+##### Collection Interface
+- stream()
+	+ provides a sequencial of elements in the collection
+- parallelStream()
+	+ provides a parallel stream of elements in the collection
+	+ Uses the [fork-join framework](https://docs.oracle.com/javase/tutorial/essential/concurrency/forkjoin.html) implementation
 
+##### Arrays Class
+- stream()
+	+ An array is a collection of data, so logical to be able to create a stream
+	+ provides a sequencial strema
+	+ overloded methods for different types
+		* double, int, long and Object
 
+##### Files Class
+- find(Path, BiPredicate, FileVisitOption)
+	+ a stream of File references that match a given BiPredicate
+- list(Path)
+	+ a stream of entries from a given directory
+- lines(Path)
+	+ a stream of strings that are the lines read from a given file
+- walk(Path, FileVisitOption)
+	+ a stream of File references walking from a given Path
 
-				 
+##### Random Numbers
+> generating infinite streams
+- three random related classes 
+	+ Random, ThreadLocalRandom and SplittableRandom
+- methods to produce finite or infinite streams of random numbers
+	+ ints(), doubles() and longs()
+	+ four versions of each
+		finite or infinite
+		with and without seed
 
+##### Miscellaneous Classes and Methods
+- JarFile/ZipFile: stream()
+	+ returns a file stream of contents of the compressed archive
+- BufferedReader: lines()
+	+ returns a steam of strings that are the lines read from the input
+- Pattern: splitAsStream()
+	+ retunrs a stream of strings of matches of a pattern
+	+ like split(), but returns a stream rather than an array
+- CharSequence
+	+ chars(): chars values as ints for the sequence
+	+ codePoints(): code point values for this sequence
+- BitSet
+	+ stream(): indices of bits that are set
 
+##### Stream Static Methods
+> IntStream, DoubleStream and LongStream
 
-
-
-
-
+- these interfaces are primitive specialisations of the Stream interface
+- concat(Stream, Stream), empty()
+	+ concatenates two specified streams, returns an empty stream
+- of(T... values)
+	+ a stream that consists of the specified values
+- range(int, int), rangeClosed(int, int)
+	+ a stream from a star to an end value (exclusive or inclusive)
+- generate(IntSupplier), iterate(int, IntUnaryOperator)
+	+ an infinite stream created by a given Supplier
+	+ iterate() uses seed to start the stream
 
 
 
