@@ -382,7 +382,7 @@ We now pass HOW to create the message, not the actual message
 * [Lesson 2.2 - Elements of Stream](#lesson-22---elements-of-stream)
 * [Lesson 2.3 - Streams of Objects and Primitive Types](#lesson-23---streams-of-objects-and-primitive-types)
 * [Lesson 2.4 - Streams Sources in JDK 8](#lesson-24---streams-sources-in-jdk-8)
-* [Lesson 2.5 - Stream Interface: Intermediate Operations](#lesson-25---stream-interface:-intermediate-operations)
+* [Lesson 2.5 - Stream Interface: Intermediate Operations](lesson-25---stream-interface-intermediate-operations)
 
 #####STREAMS
 
