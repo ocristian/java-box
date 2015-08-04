@@ -374,7 +374,7 @@ Useful New Methods in JDK 8 That can use Lambda
 ```
 
 We now pass HOW to create the message, not the actual message
-
+-------------------------------------------------------------
 
 ##STREAMS
 
@@ -382,6 +382,7 @@ We now pass HOW to create the message, not the actual message
 * [Lesson 2.2 - Elements of Stream](#lesson-22---elements-of-stream)
 * [Lesson 2.3 - Streams of Objects and Primitive Types](#lesson-23---streams-of-objects-and-primitive-types)
 * [Lesson 2.4 - Streams Sources in JDK 8](#lesson-24---streams-sources-in-jdk-8)
+* [Lesson 2.5 - Stream Interface: Intermediate Operations](#lesson-25---stream-interface:-intermediate-operations)
 
 #####STREAMS
 
@@ -610,14 +611,79 @@ see lesson 2.4 on [Youtube](https://youtu.be/pbtFL7T_HLw)
 	+ an infinite stream created by a given Supplier
 	+ iterate() uses seed to start the stream
 
+### Lesson 2.5 - Stream Interface: Intermediate Operations 
+see lesson 2.5 on [Youtube](https://youtu.be/2eIr0U78_gA)
+> represents aggregate operations on elements
+> most methods can use Lambda Expressions to define behaviour
+> powerfull range of intermediate operations allow streams to be manipulated as required
 
+- stream provide a sequence of elements
+	+ supporting either sequencial or parallel aggregate operations
+- most operations take a parameter that describes its behaviour
+	+ tipically using lambda expressions
+	+ must be non-interfering (does not modify the stream)
+	+ typically stateless
+- streams may be changed from sequencial to parallel (and vice-versa)
+	+ all processing is done either sequencially or in parallel
+	+ last call wins
 
+##### Filtering and Mapping
+- distinct()
+	+ returns a stream with no duplicate elements
+- filter(Predicate p)
+	+ returns a stream with only those elements that return true for the Predicate 
+- map(Function f)
+	+ return a stream where the give function is applied to each element on the input stream
+- mapToInt(), mapToDouble() and mapToLong()
+	+ like map(), but producing streams of primitives rather than objects
 
+##### Maps and FlatMaps
+> Map values in a stream
 
+- Map
+	+ 1-to-1 mapping
+	+ input stream -> output stream
+- FlatMap
+	+ 1-to-many mapping
+	+ input stream -> many maps -> output stream
+	+ FlatMap example: Words in a File
 
+```java
+ 	List<String> output = reader
+ 		.lines()
+ 		.flatMap( line -> Stream.of( line.split( REGEXP ) ) )
+ 		.filter( word -> word.length() > 0 )
+ 		.collect( Collectors.toList() );
+```
 
+##### Restricting the size of a Stream
+- skip(long n)
+	+ returns a stream that _skips the first n_ elements of the input stream
+- limit(long n)
+- 	returns a stream that _only contains the first n_ elements of the input stream  
+```java
+	String output = bufferedReader
+		.lines()
+		.skip(2)
+		.limit(2)
+		.collect( Collectors.joining() );
+```
 
+##### Sorting and Unsorting
+- sorted( Comparator c )
+	+ returns a stream that is sorted with the order determined by the Comparator
+	+ sorted() with no arguments sorts by natural order
+- unordered()
+	+ inherited from BaseStream
+	+ returns a stream that is unordered (used internally)
+	+ can improve efficiency of operatins like distinct() and groupingBy()
 
+##### Observing Stream Elements
+> as they go past
 
+- peek( Consumer c )
+	+ returns an output stream that is identical to the input stream
+	+ each elements is passed to the accept() method of the Consumer
+	+ the Consumer most not modify the elements of the stream
+	+ useful for debbugin and doing more than one thing with a stream
 
-				
