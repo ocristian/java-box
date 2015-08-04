@@ -374,15 +374,17 @@ Useful New Methods in JDK 8 That can use Lambda
 ```
 
 We now pass HOW to create the message, not the actual message
--------------------------------------------------------------
+
 
 ##STREAMS
+---------
 
 * [Lesson 2.1 - Introducion to Stream API](#lesson-21---introducion-to-stream-api)
 * [Lesson 2.2 - Elements of Stream](#lesson-22---elements-of-stream)
 * [Lesson 2.3 - Streams of Objects and Primitive Types](#lesson-23---streams-of-objects-and-primitive-types)
 * [Lesson 2.4 - Streams Sources in JDK 8](#lesson-24---streams-sources-in-jdk-8)
-* [Lesson 2.5 - Stream Interface: Intermediate Operations](lesson-25---stream-interface-intermediate-operations)
+* [Lesson 2.5 - Stream Interface: Intermediate Operations](#lesson-25---stream-interface-intermediate-operations)
+
 
 #####STREAMS
 
@@ -614,7 +616,9 @@ see lesson 2.4 on [Youtube](https://youtu.be/pbtFL7T_HLw)
 ### Lesson 2.5 - Stream Interface: Intermediate Operations 
 see lesson 2.5 on [Youtube](https://youtu.be/2eIr0U78_gA)
 > represents aggregate operations on elements
+> 
 > most methods can use Lambda Expressions to define behaviour
+> 
 > powerfull range of intermediate operations allow streams to be manipulated as required
 
 - stream provide a sequence of elements
