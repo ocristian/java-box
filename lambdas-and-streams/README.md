@@ -384,6 +384,7 @@ We now pass HOW to create the message, not the actual message
 * [Lesson 2.3 - Streams of Objects and Primitive Types](#lesson-23---streams-of-objects-and-primitive-types)
 * [Lesson 2.4 - Streams Sources in JDK 8](#lesson-24---streams-sources-in-jdk-8)
 * [Lesson 2.5 - Stream Interface: Intermediate Operations](#lesson-25---stream-interface-intermediate-operations)
+* [Lesson 2.6 - Stream Interface: Terminal Operations](#lesson-26------stream-interface-terminal-operations)
 
 
 #####STREAMS
@@ -691,3 +692,71 @@ see lesson 2.5 on [Youtube](https://youtu.be/2eIr0U78_gA)
 	+ the Consumer most not modify the elements of the stream
 	+ useful for debbugin and doing more than one thing with a stream
 
+
+### Lesson 2.6 - Stream Interface: Terminal Operations 
+see lesson 2.6 on [Youtube](https://youtu.be/4jjXu8A6cuY)
+
+- terminates the pipeline of operations on the stream
+- only at this point is any processing performed
+	+ this allows for optimisations of the pipeline
+		* lazy evaluation
+		* merge/fused operations
+		* eliminations of redundant operations
+		* parallel execution
+- generate a explicit result or a side efect
+
+##### Matching Elements
+- findFirst(Predicat p)
+	+ the first element that matches using the give Predicate
+- findAny(Predicate p)
+	+ works the same way as finFirst(), but for a parallel stream
+- boolean allMatch(Predicate p)
+	+ whether all elements of the stream match using the Predicate
+- boolean anyMatch(Predicate p)
+	+ whether any elements of the stream match using the Predicate
+- boolean noneMatch(Predicate p)
+	+ whether no elements match using the Predicate
+
+##### Collecting Results
+- collector(Collector c)
+	+ performs a mutable reduction on the stream
+- toArray()
+	+ returns an array containing the  elements of the stream
+
+##### NUmerical Results
+
+> Object Stream
+
+- count()
+	+ return how many elements are in the stream
+- max(Comparator c)
+	+ the maximum value element of the stream using the Comparator
+	+ return an Optional, since the stream may be empty
+- min(Comparator c)
+	+ the minimun value element of the stream using the Comparator
+	+ return an Optional, since the stream may be empty
+
+> Primitive Type Streams (IntStream, DoubleStream and LongStream)
+
+- average()
+	+ return the arithmetic mean of the stream
+	+ returns an Optional, as the stream may be empty
+- sum()
+	+ returns the sum of the stream elements
+
+##### Iteration
+- forEach( Consumer c )
+	+ performs an action for each element of this stream
+- forEachOrdered(Consumer c )
+	+ like forEach, but ensures that the order of the elements (if one exists) is respected when used for a parallel stream
+
+##### Folding a Stream
+> creating a single result from multiple input elements
+
+- reduce( BinaryOperator accumulator )
+	+ performs a reduction on the stream using a BinaryOperator
+	+ the accumulator takes a partial result and the next element, returns a new partial result
+	+ returns an Optional 
+	+ two other versions
+		* takes a initial value (does not return an Optional)
+		* takes a initial value and BiFuction (equivalent to a fused map and reduce)
