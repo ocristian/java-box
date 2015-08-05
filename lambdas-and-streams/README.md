@@ -536,7 +536,7 @@ see lesson 2.3 on [Youtube](https://youtu.be/O9tajXDd9IU)
 ```java
 	int highScore = students.stream()
 		.filter( s -> s.graduationYear() == 2015 )
-		.mapToInt( s -> s.getScore() ) // with mapToInt, no oxing or unboxing are necessary
+		.mapToInt( s -> s.getScore() ) // with mapToInt, no boxing or unboxing are necessary
 		.max();
 ```
 
