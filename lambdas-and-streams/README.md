@@ -386,7 +386,6 @@ We now pass HOW to create the message, not the actual message
 * [Lesson 2.5 - Stream Interface: Intermediate Operations](#lesson-25---stream-interface-intermediate-operations)
 * [Lesson 2.6 - Stream Interface: Terminal Operations](#lesson-26---stream-interface-terminal-operations)
 
-
 #####STREAMS
 
 
@@ -691,7 +690,6 @@ see lesson 2.5 on [Youtube](https://youtu.be/2eIr0U78_gA)
 	+ each elements is passed to the accept() method of the Consumer
 	+ the Consumer most not modify the elements of the stream
 	+ useful for debbugin and doing more than one thing with a stream
-
 
 ### Lesson 2.6 - Stream Interface: Terminal Operations 
 see lesson 2.6 on [Youtube](https://youtu.be/4jjXu8A6cuY)
