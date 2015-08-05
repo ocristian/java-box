@@ -385,9 +385,9 @@ We now pass HOW to create the message, not the actual message
 * [Lesson 2.4 - Streams Sources in JDK 8](#lesson-24---streams-sources-in-jdk-8)
 * [Lesson 2.5 - Stream Interface: Intermediate Operations](#lesson-25---stream-interface-intermediate-operations)
 * [Lesson 2.6 - Stream Interface: Terminal Operations](#lesson-26---stream-interface-terminal-operations)
+* [Lesson 2.7 - The Optional Class](#lesson-27---the-optional-class)
 
 #####STREAMS
-
 
 ### Lesson 2.1 - Introducion to Stream API
 see lesson 2.1 on [Youtube](https://youtu.be/IgQ7yTh5LJY)
@@ -758,3 +758,131 @@ see lesson 2.6 on [Youtube](https://youtu.be/4jjXu8A6cuY)
 	+ two other versions
 		* takes a initial value (does not return an Optional)
 		* takes a initial value and BiFuction (equivalent to a fused map and reduce)
+
+### Lesson 2.7 - The Optional Class 
+see lesson 2.7 on [Youtube](https://youtu.be/HwxFhHsGneo)
+
+##### Avoiding NullPointerExceptions
+```java
+	String direction = gpsData.getPosition().getLatitude().getDirection();
+```
+_And if gpsData or gpsData.getPosition() or gpsData.getLatitude() return a null?_
+_pLá!!!!_ NullPointerExceptions for you!
+
+maybe this way?
+```java
+	String direction = "UNKNOWN";
+
+	if (gpsData != null) {
+		Position p = gpsData.getPosition();
+
+		if (p != null) {
+			Latitude latitude = p.getLatitude();
+
+			if (latitude != null) {
+				direction = latitude.getDirection(); 
+			}
+		}
+	}
+
+```
+
+good, but now we have the Optional Class
+
+##### Optional Class
+> helping to eliminate the NullPointerException
+
+- terminal operatins like min() and max() may not return a direct result 
+	+ suppose the input stream is empty?
+- Optional<T>
+	+ container for another object reference (null or real object)
+	+ think of it like a stream of 0 or 1 elements
+	+ guaranteed that the Optional reference returned will not be null
+
+##### Optional ifPresent()
+> do something when set
+
+```java
+	//before
+	if (x != null) {
+		print(x);
+	}
+
+	//now, with Optional
+	opt.ifPresent( x -> print(x) );
+
+	// with method reference
+	opt.ifPresent(this::print);
+
+```
+
+##### Optional filter()
+> reject certain values of the Optional
+
+```java
+	//before
+	if (x != null && x.contains("a")) {
+		print(x);
+	}
+
+	opt.filter( x -> x.contains("a") )
+		.ifPresent(this::print);
+
+```
+
+##### Optional map()
+> transform value if present
+
+```java
+	//before
+	if (x != null) {
+		String t = x.trim();
+		if (t.lenght() > 0) {
+			print(t);
+		}
+	}
+
+	opt.map( String::trim )
+		.filter( t -> t.lenght() > 0)
+		.ifPresent( this::print );
+
+```
+
+##### Optional flatMap()
+> further
+
+```java
+	public String findSimilar(String s)
+
+	Optional<String> tryFindSimilar(String s)
+
+	Optional<Optional<String>> bad = opt.map(this::tryFindSimilar);
+
+	Optional<String> similar = opt.flatMap(this::tryFindSimilar);
+
+```
+
+##### Updating or GPS code
+
+```java
+	class GPSData {
+		public Optional<Position> getPosition {...}
+	}
+
+	class Position {
+		public Optional<Latitude> getLatitude {...}
+	}
+
+	class Latitude {
+		public String getDirection {...}
+	}
+
+
+	String direction = Optional
+		.ofNullable(gpsData) // reference could be null
+		.flatmap(GPSData::getPosition) //return an Optional
+		.flatMap(Position::getLatitude)	//return an Optional
+		.map(Latitude::getDirection) //returns a String
+		.orElse("None"); // if is null, return None otherwise the value
+
+```
