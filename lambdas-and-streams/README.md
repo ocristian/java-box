@@ -384,7 +384,7 @@ We now pass HOW to create the message, not the actual message
 * [Lesson 2.3 - Streams of Objects and Primitive Types](#lesson-23---streams-of-objects-and-primitive-types)
 * [Lesson 2.4 - Streams Sources in JDK 8](#lesson-24---streams-sources-in-jdk-8)
 * [Lesson 2.5 - Stream Interface: Intermediate Operations](#lesson-25---stream-interface-intermediate-operations)
-* [Lesson 2.6 - Stream Interface: Terminal Operations](#lesson-26------stream-interface-terminal-operations)
+* [Lesson 2.6 - Stream Interface: Terminal Operations](#lesson-26---stream-interface-terminal-operations)
 
 
 #####STREAMS
@@ -723,7 +723,7 @@ see lesson 2.6 on [Youtube](https://youtu.be/4jjXu8A6cuY)
 - toArray()
 	+ returns an array containing the  elements of the stream
 
-##### NUmerical Results
+##### Numerical Results
 
 > Object Stream
 
