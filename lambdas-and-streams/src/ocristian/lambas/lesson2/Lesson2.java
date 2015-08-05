@@ -135,7 +135,7 @@ public class Lesson2 {
 			/* YOUR CODE HERE */
 			// 1st, get the stream - lines()
 			// 2nd, apply the flatMap to map values in a stream to new map
-			// 3th, apply the filter distinct, to get distinct words
+			// 3rd, apply the filter distinct, to get distinct words
 			// 4th, collect the result
 			
 			List<String> words = reader
