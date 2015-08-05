@@ -767,6 +767,7 @@ see lesson 2.7 on [Youtube](https://youtu.be/HwxFhHsGneo)
 	String direction = gpsData.getPosition().getLatitude().getDirection();
 ```
 _And if gpsData or gpsData.getPosition() or gpsData.getLatitude() return a null?_
+
 _pLá!!!!_ NullPointerExceptions for you!
 
 maybe this way?
