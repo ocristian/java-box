@@ -13,6 +13,9 @@ import java.util.TreeMap;
 
 /**
  * @author Speakjava (simon.ritter@oracle.com)
+ * <br/>
+ * <br/>
+ * Exercises solved by:
  * @author <a href="http://about.me/ocristian">Cristian R. Silva
  *         (about.me/ocristian)</a>
  */
