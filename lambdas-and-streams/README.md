@@ -793,7 +793,7 @@ good, but now we have the Optional Class
 ##### Optional Class
 > helping to eliminate the NullPointerException
 
-- terminal operatins like min() and max() may not return a direct result 
+- terminal operations like min() and max() may not return a direct result 
 	+ suppose the input stream is empty?
 - Optional<T>
 	+ container for another object reference (null or real object)
