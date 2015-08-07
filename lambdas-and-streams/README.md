@@ -887,3 +887,30 @@ good, but now we have the Optional Class
 		.orElse("None"); // if is null, return None otherwise the value
 
 ```
+
+
+##Advanced Lambda and Stream Concepts
+---------
+
+* [Lesson 3.1 - Lambda Expressions](#lesson-31---understanding-and-using-reductions)
+
+### Lesson 3.1 - Understanding and Using Reductions
+see lesson 1 on [Youtube](https://youtu.be/tTiI_ibmpcM)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
