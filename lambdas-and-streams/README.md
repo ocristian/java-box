@@ -3,7 +3,9 @@
 Here I'll take some notes about [Lambdas and Streams Introduction](https://apexapps.oracle.com/pls/apex/f?p=44785:141:105593264740337::NO::P141_PAGE_ID,P141_SECTION_ID:250,1807) the online course provided by Simon Ritter @speakjava 
 
 [1. Lambdas](#lambdas)
+
 [2. Streams](#streams)
+
 [3. Advanced Lambda and Stream Concepts](#advanced-lambda-and-stream-concepts)
 
 ---
