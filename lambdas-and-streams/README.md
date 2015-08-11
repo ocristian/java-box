@@ -896,17 +896,92 @@ good, but now we have the Optional Class
 
 ### Lesson 3.1 - Understanding and Using Reductions
 see lesson 1 on [Youtube](https://youtu.be/tTiI_ibmpcM)
+> reduction take a stream and reduces it to a single value
+> 
+> the way the reduction works is defined by accumulator
+> 	which is a BinaryOperator
+> 	the acumulator is applied successively to the stream elements
+> 	the reduce() method maintains a partial result state
+> 	like a recursive approach, but without the resource overhead
+> 	
+> requires you to think differently to an imperative, loop based approach
+
+##### A Simple Problem
+
+- Find the *length of the longest line* in a file
+
+```java
+	Path input = Paths.get("lines.txt");
+
+	int longestLineLength = Files.lines(input)
+		.mapToInt(String::length)
+		.max()
+		.getAsInt();
+```
+
+##### Another Simple Problem
+
+- Find the longest line in a file
+
+*Naive Stream Solution*
+	
+```java
+	int longest = Files.lines(input)
+		.sort( ( x, y ) -> y.length() - x.length() )
+		.findFirst()
+		.get();
+```
+- _Big files will take a long time and a lot of resources_
+
+*External Iteration Solution*
+	
+```java
+	String longest = "";
+
+	while( ( String s = reader.readLine() ) != null )
+		if ( s.length() > longest.length() )
+			longest = s;
+```
+- _Simple, but inheritly serial_
+- _Not thread safe due to mutable state_
+- _Not functional_
+
+*Recursive Approach*
+
+```java
+	String findLongestString(String s, int index, List<String> l) {
+
+		....
+		String s2 = findLongestString(l.get(index), index + 1, l);
+		....
+	}
 
 
+	List<String> lines = new ArrayList<>();
 
+	while( ( String s = reader.readLine() ) != null )
+		lines.add(s);
 
+	String longest = findLongestString("", 0, lines);	
 
+```
 
+- _Not explicit loop, no mutable state, so we now have a functional solution_
+- _Unfortunaly not a usable one_
+	+ larger data sets will generate an OutOfMemoryException
 
-
-
-
-
+*A better Stream Solution*
+- the Stream API uses the well known filter-map-reduce pattern
+- for this problem we do not need to filter() or map(), just reduce()
+- reduce method definition
+```java
+	Optional<T> reduce(BinaryOperation<T> accumulator) 
+```
+- the key is to find the rigth accumulator
+	+ recall the accumulator takes a partial result and the next element, and returns a new partial result
+	+ in essence it does the same as our recursive solution
+	+ without all stack frames
+- 
 
 
 
