@@ -4,26 +4,26 @@ Here I'll take some notes about [Lambdas and Streams Introduction](https://apexa
 
 [1. Lambdas](#1-lambdas)
 
-[2. Streams](#streams)
+[2. Streams](#2-streams)
 
-[3. Advanced Lambda and Stream Concepts](#advanced-lambda-and-stream-concepts)
+[3. Advanced Lambda and Stream Concepts](#3-advanced-lambda-and-stream-concepts)
 
 ---
 ##1. Lambdas
 
-* [Lesson 1 - Lambda Expressions](#lesson-1---lambda-expressions)
-* [Lesson 2 - Lambda Expression Syntax](#lesson-2---lambda-expression-syntax)
-* [Lesson 3 - Functional Interfaces And Their Definition](#lesson-3---functional-interfaces-and-their-definition)
-* [Lesson 4 - Functional Interfaces in the java.util.function Package](#lesson-4---functional-interfaces-in-the-javautilfunction-package)
-* [Lesson 5 - Method and Constructor References](#lesson-5---method-and-constructor-references)
-* [Lesson 6 - Referencing External Variables in Lambda Expressions](#lesson-6---referencing-external-variables-in-lambda-expressions)
-* [Lesson 7 - Useful New Methods In JDK 8 That Can Use Lambdas](#lesson-7---useful-new-methods-in-jdk-8-that-can-use-lambdas)
+* [Lesson 1.1 - Lambda Expressions](#lesson-11---lambda-expressions)
+* [Lesson 1.2 - Lambda Expression Syntax](#lesson-12---lambda-expression-syntax)
+* [Lesson 1.3 - Functional Interfaces And Their Definition](#lesson-13---functional-interfaces-and-their-definition)
+* [Lesson 1.4 - Functional Interfaces in the java.util.function Package](#lesson-14---functional-interfaces-in-the-javautilfunction-package)
+* [Lesson 1.5 - Method and Constructor References](#lesson-15---method-and-constructor-references)
+* [Lesson 1.6 - Referencing External Variables in Lambda Expressions](#lesson-16---referencing-external-variables-in-lambda-expressions)
+* [Lesson 1.7 - Useful New Methods In JDK 8 That Can Use Lambdas](#lesson-17---useful-new-methods-in-jdk-8-that-can-use-lambdas)
 
-### Lesson 1 - Lambda Expressions
-see lesson 1 on [Youtube](https://youtu.be/WXtVHTGDV9g)
+### Lesson 1.1 - Lambda Expressions
+see lesson 1.1 on [Youtube](https://youtu.be/WXtVHTGDV9g)
 	
-### Lesson 2 - Lambda Expression Syntax
-see lesson 2 on [Youtube](https://youtu.be/DD5IKXx4ZPk)
+### Lesson 1.2 - Lambda Expression Syntax
+see lesson 1.2 on [Youtube](https://youtu.be/DD5IKXx4ZPk)
 	
 ##### Lambdas
 
@@ -89,8 +89,8 @@ Compiler smarter:
 	String r = process(list, (x, y) -> x.length() – y.length())
 ```
 
-### Lesson 3 - Functional Interfaces And Their Definition
-see lesson 3 on [Youtube](https://youtu.be/oV6nNR6im6o)
+### Lesson 1.3 - Functional Interfaces And Their Definition
+see lesson 1.3 on [Youtube](https://youtu.be/oV6nNR6im6o)
 
 > **There is a single abstract method**
 > 
@@ -143,8 +143,8 @@ Callable c = () -> process();
 new Thread( () -> process() ).start();
 ```
 
-### Lesson 4 - Functional Interfaces in the java.util.function Package
-see lesson 4 on [Youtube](https://youtu.be/kKFD9fwcmtk)
+### Lesson 1.4 - Functional Interfaces in the java.util.function Package
+see lesson 1.4 on [Youtube](https://youtu.be/kKFD9fwcmtk)
 
 > Provides a range of functional interfaces
 > 
@@ -230,8 +230,8 @@ useful default and static methods for combination
 ```
 
 
-### Lesson 5 - Method and Constructor References
-see lesson 5 on [Youtube](https://youtu.be/CURWqa7KWDk)
+### Lesson 1.5 - Method and Constructor References
+see lesson 1.5 on [Youtube](https://youtu.be/CURWqa7KWDk)
 
 #####Method References
 let us a reuse a method as a lambda expression
@@ -283,8 +283,8 @@ Same concept as a Method Reference
 	Factory <List<String>> f = 	ArrayList<String>()::new;
 ```
 
-### Lesson 6 - Referencing External Variables in Lambda Expressions
-see lesson 6 on [Youtube](https://youtu.be/sciFQ_s4cQU)
+### Lesson 1.6 - Referencing External Variables in Lambda Expressions
+see lesson 1.6 on [Youtube](https://youtu.be/sciFQ_s4cQU)
 
 #####Local Variable Capture
 
@@ -320,8 +320,8 @@ Which are not final, or effectively final
 	}
 ```
 
-### Lesson 7 - Useful New Methods In JDK 8 That Can Use Lambdas
-see lesson 7 on [Youtube](https://youtu.be/olKF7VpJMfg)
+### Lesson 1.7 - Useful New Methods In JDK 8 That Can Use Lambdas
+see lesson 1.7 on [Youtube](https://youtu.be/olKF7VpJMfg)
 
 Useful New Methods in JDK 8 That can use Lambda
 
@@ -383,7 +383,7 @@ We now pass HOW to create the message, not the actual message
 
 
 ---
-##STREAMS
+##2. STREAMS
 
 * [Lesson 2.1 - Introducion to Stream API](#lesson-21---introducion-to-stream-api)
 * [Lesson 2.2 - Elements of Stream](#lesson-22---elements-of-stream)
