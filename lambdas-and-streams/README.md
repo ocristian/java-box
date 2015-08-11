@@ -920,7 +920,7 @@ see lesson 1 on [Youtube](https://youtu.be/tTiI_ibmpcM)
 
 ##### Another Simple Problem
 
-- Find the longest line in a file
+- Find the *longest line* in a file
 
 *Naive Stream Solution*
 	
@@ -979,9 +979,30 @@ see lesson 1 on [Youtube](https://youtu.be/tTiI_ibmpcM)
 - the key is to find the rigth accumulator
 	+ recall the accumulator takes a partial result and the next element, and returns a new partial result
 	+ in essence it does the same as our recursive solution
-	+ without all stack frames
-- 
+	+ without all the stack frames
+- use the recursive approach as an accumulator for a reduction
+```java
+	String longestLine = Files.lines(input)
+		.reduce( ( x, y ) -> {
+			if ( x.length() > y.length() )
+				return x; // x in effect maintains state, by always holding the longest string found so far
+			return y;	
+		})
+		.get();
+```
 
+*The Simplest Stream Solution*
+- use a specialised form of max()
+- one that takes a Comparator as a paramenter
+```java
+	Files.lines(input)
+		.max( comparingInt( String::length ) )
+		.get();
+```
+- comparingInt() is a static method on Comparator
+```java
+	Comparator<T> comparingInt( ToIntFunction<? extends T> keyExtractor )
+```
 
 
 
