@@ -382,8 +382,8 @@ Useful New Methods in JDK 8 That can use Lambda
 We now pass HOW to create the message, not the actual message
 
 
+---
 ##STREAMS
----------
 
 * [Lesson 2.1 - Introducion to Stream API](#lesson-21---introducion-to-stream-api)
 * [Lesson 2.2 - Elements of Stream](#lesson-22---elements-of-stream)
@@ -894,9 +894,8 @@ good, but now we have the Optional Class
 
 ```
 
-
+---
 ##Advanced Lambda and Stream Concepts
----------
 
 * [Lesson 3.1 - Understanding and Using Reductions](#lesson-31---understanding-and-using-reductions)
 * [Lesson 3.2 - Finite and Infinite Streams](#lesson-32---finite-and-infinite-streams)
