@@ -2,14 +2,14 @@
 
 Here I'll take some notes about [Lambdas and Streams Introduction](https://apexapps.oracle.com/pls/apex/f?p=44785:141:105593264740337::NO::P141_PAGE_ID,P141_SECTION_ID:250,1807) the online course provided by Simon Ritter @speakjava 
 
-[1. Lambdas](#lambdas)
+[1. Lambdas](#1-lambdas)
 
 [2. Streams](#streams)
 
 [3. Advanced Lambda and Stream Concepts](#advanced-lambda-and-stream-concepts)
 
 ---
-##Lambdas
+##1. Lambdas
 
 * [Lesson 1 - Lambda Expressions](#lesson-1---lambda-expressions)
 * [Lesson 2 - Lambda Expression Syntax](#lesson-2---lambda-expression-syntax)
@@ -895,7 +895,7 @@ good, but now we have the Optional Class
 ```
 
 ---
-##Advanced Lambda and Stream Concepts
+##3. Advanced Lambda and Stream Concepts
 
 * [Lesson 3.1 - Understanding and Using Reductions](#lesson-31---understanding-and-using-reductions)
 * [Lesson 3.2 - Finite and Infinite Streams](#lesson-32---finite-and-infinite-streams)
