@@ -892,10 +892,11 @@ good, but now we have the Optional Class
 ##Advanced Lambda and Stream Concepts
 ---------
 
-* [Lesson 3.1 - Lambda Expressions](#lesson-31---understanding-and-using-reductions)
+* [Lesson 3.1 - Understanding and Using Reductions](#lesson-31---understanding-and-using-reductions)
+* [Lesson 3.2 - Finite and Infinite Streams](#lesson-32---finite-and-infinite-streams)
 
 ### Lesson 3.1 - Understanding and Using Reductions
-see lesson 1 on [Youtube](https://youtu.be/tTiI_ibmpcM)
+see lesson 3.1 on [Youtube](https://youtu.be/tTiI_ibmpcM)
 
 - reduction take a stream and reduces it to a single value
 - the way the reduction works is defined by accumulator
@@ -1004,8 +1005,58 @@ see lesson 1 on [Youtube](https://youtu.be/tTiI_ibmpcM)
 	Comparator<T> comparingInt( ToIntFunction<? extends T> keyExtractor )
 ```
 
+### Lesson 3.2 - Finite and Infinite Streams
+see lesson 3.2 on [Youtube](https://youtu.be/bt5MIkrYgzM)
 
+- Streams can be finite as well as infinite
+- there is no concept of breaking out of a stream
+- use terminal operator to stop processing
+- or use infinite stream infinitely
 
+##### Dealing with the Inderteminate
+> imperative java
 
+- how to continue processing when we can`t predict for how long?
+```java
+	while ( true ){
+		doSomeProcessing();
 
+		if ( someCriteriaIsTrue() )
+			break;
+		// loop repeats indefinitely	
+	}
+```
 
+##### Using Infinite Streams
+> making the Stream finite
+
+- terminate the Stream when a condictions is met
+	+ findFirst( Predicate p ) //works with sequencial and parallel streams
+	+ findAny( Predicate p ) //work with parallel streams
+```java
+	int r = Random.ints() //infinite stream of random integers
+		.findFirst( i -> i > 256 ); //stream terminates when a number os gratter than 256
+```
+
+> keeping it ifinite
+
+- sometimes we need to continue to use a stream indefinitely
+- what terminal operation should we use fot this?
+	+ _*use forEach()*_
+	+ this consumes the element from the stream
+	+ but does not terminate it
+
+> ifinite example
+
+- reading a temperature from a serial sensor
+	+ converting from farenheit to celcius, removing F
+	+ notifying a listner of changes if registered
+```java
+	thermalReader.lines()
+		.mapToDouble( s -> 
+			Double.parseDouble( s.substring( 0, s.length() - 1 ) ) )
+		.map( t -> ( ( t - 32 ) * 5 / 9 ) )
+		.filter( t -> currentTemperature.equals(t) )
+		.peek( t -> listner.ifPresent( l -> l.temperatureChanged(t) ) )
+		.forEach( t -> currentTemperature.set(t) );	
+```
