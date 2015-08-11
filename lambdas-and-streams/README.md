@@ -1008,7 +1008,7 @@ see lesson 3.1 on [Youtube](https://youtu.be/tTiI_ibmpcM)
 ### Lesson 3.2 - Finite and Infinite Streams
 see lesson 3.2 on [Youtube](https://youtu.be/bt5MIkrYgzM)
 
-- Streams can be finite as well as infinite
+- streams can be finite as well as infinite
 - there is no concept of breaking out of a stream
 - use terminal operator to stop processing
 - or use infinite stream infinitely
@@ -1031,8 +1031,8 @@ see lesson 3.2 on [Youtube](https://youtu.be/bt5MIkrYgzM)
 > making the Stream finite
 
 - terminate the Stream when a condictions is met
-	+ findFirst( Predicate p ) //works with sequencial and parallel streams
-	+ findAny( Predicate p ) //work with parallel streams
+	+ findFirst( Predicate p ), works with sequencial and parallel streams
+	+ findAny( Predicate p ), work with parallel streams
 ```java
 	int r = Random.ints() //infinite stream of random integers
 		.findFirst( i -> i > 256 ); //stream terminates when a number os gratter than 256
@@ -1041,7 +1041,7 @@ see lesson 3.2 on [Youtube](https://youtu.be/bt5MIkrYgzM)
 > keeping it ifinite
 
 - sometimes we need to continue to use a stream indefinitely
-- what terminal operation should we use fot this?
+- what terminal operation should we use for this?
 	+ _*use forEach()*_
 	+ this consumes the element from the stream
 	+ but does not terminate it
