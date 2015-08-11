@@ -896,16 +896,14 @@ good, but now we have the Optional Class
 
 ### Lesson 3.1 - Understanding and Using Reductions
 see lesson 1 on [Youtube](https://youtu.be/tTiI_ibmpcM)
-> reduction take a stream and reduces it to a single value
-> 
-> the way the reduction works is defined by accumulator
-> 
-> 	which is a BinaryOperator
-> 	the acumulator is applied successively to the stream elements
-> 	the reduce() method maintains a partial result state
-> 	like a recursive approach, but without the resource overhead
-> 	
-> requires you to think differently to an imperative, loop based approach
+
+- reduction take a stream and reduces it to a single value
+- the way the reduction works is defined by accumulator
+	+ which is a BinaryOperator
+	+ the acumulator is applied successively to the stream elements
+	+ the reduce() method maintains a partial result state
+	+ like a recursive approach, but without the resource overhead
+- requires you to think differently to an imperative, loop based approach
 
 ##### A Simple Problem
 
