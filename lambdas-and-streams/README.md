@@ -35,7 +35,7 @@ see lesson 1.2 on [Youtube](https://youtu.be/DD5IKXx4ZPk)
 ######Why Lambda expressions?
 > **To make life easier to write parallel code**
 > 
-> do you remeber concurrency in Java?
+> do you remember concurrency in Java?
 >
 >- 1.0 - Threads
 >- 5.0 - Concurrent
@@ -100,7 +100,7 @@ see lesson 1.3 on [Youtube](https://youtu.be/oV6nNR6im6o)
 - **has only one abstract method**
 - before jdk8, obvious, only one method
 - after jdk8, introduced _default_ methods and allows static methods in interfaces
- - allows multiple **inheritance of _behavior_** for java
+ - allows multiple **inheritances of _behavior_** for java
 - New annotation @FunctionalInterface
  - informative, used to indicate that an interface is intended to be a functional interface. see [java doc](https://docs.oracle.com/javase/8/docs/api/java/lang/FunctionalInterface.html) for more info.   
 
@@ -134,7 +134,7 @@ and:
 ######Examples of Use Lambda Expressions
 > can be used anywhere the type is a functional interface
 
-- Variable assignement
+- Variable assignment
 ```java
 Callable c = () -> process();
 ```
@@ -169,7 +169,7 @@ see lesson 1.4 on [Youtube](https://youtu.be/kKFD9fwcmtk)
 ```
 
 #####Supplier
-> A Supplier of Results, the oposite of Consumer
+> A Supplier of Results, the opposite of Consumer
 
 ```java
 	() -> createLogMessage()
@@ -194,7 +194,7 @@ Useful static method for composing. Ex.: compose and andThen
 ```
 
 #####UnaryOperator<T>
-> Specialized form of funcion
+> Specialized form of function
 > Single argument and result of the same type
 
 ```java
@@ -203,7 +203,7 @@ Useful static method for composing. Ex.: compose and andThen
 ```
 
 #####BinaryOperator<T>
-> Specialized form of Bifuncion
+> Specialized form of Bifunction
 > Two arguments and a result all of the same type
 
 ```java
@@ -235,11 +235,11 @@ see lesson 1.5 on [Youtube](https://youtu.be/CURWqa7KWDk)
 
 #####Method References
 let us a reuse a method as a lambda expression
-Format: target_reference::methos_name
-Three kinds of methos reference
+Format: target_reference::method_name
+Three kinds of methods reference
 
 - Static method
-- Instance method of arbitary method
+- Instance method of arbitrary method
 - Instance method of an existing object 
 
 ```java
@@ -288,7 +288,7 @@ see lesson 1.6 on [Youtube](https://youtu.be/sciFQ_s4cQU)
 
 #####Local Variable Capture
 
-Efectivelly final, a variable that meets the requirements for final variables
+Effectively final, a variable that meets the requirements for final variables
 Closure on values, not on variables
 
 ```java
@@ -299,9 +299,9 @@ Closure on values, not on variables
 
 What does "this" mean in a Lambda 	
 
-- "this" referes to the enclosing object, not the lambda itself
-- Thinf of "this" as final predefined local
-- Remmember the Lambda is an ANNONYMOUS FUNCTION
+- "this" refers to the enclosing object, not the lambda itself
+- Think of "this" as final predefined local
+- Remember the Lambda is an ANNONYMOUS FUNCTION
 	- its not associate with class
 	- Therefore there can be on "this" for the Lambda
 
@@ -333,7 +333,7 @@ Useful New Methods in JDK 8 That can use Lambda
 	List<String> myList = ...
 	myList.forEach(s -> System.out.println(s));
 
-	//simplefied form, method reference
+	//simplified form, method reference
 	myList.forEach(s -> System.out::println);
 ```
 
@@ -385,7 +385,7 @@ We now pass HOW to create the message, not the actual message
 ---
 ##2. STREAMS
 
-* [Lesson 2.1 - Introducion to Stream API](#lesson-21---introducion-to-stream-api)
+* [Lesson 2.1 - Introduction to Stream API](#lesson-21---introduction-to-stream-api)
 * [Lesson 2.2 - Elements of Stream](#lesson-22---elements-of-stream)
 * [Lesson 2.3 - Streams of Objects and Primitive Types](#lesson-23---streams-of-objects-and-primitive-types)
 * [Lesson 2.4 - Streams Sources in JDK 8](#lesson-24---streams-sources-in-jdk-8)
@@ -395,12 +395,12 @@ We now pass HOW to create the message, not the actual message
 
 #####STREAMS
 
-### Lesson 2.1 - Introducion to Stream API
+### Lesson 2.1 - Introduction to Stream API
 see lesson 2.1 on [Youtube](https://youtu.be/IgQ7yTh5LJY)
 
-> bring funcional style to java
+> bring functional style to java
 > 
-> exploit hardware parallelism - "explicit but unobstrusive"
+> exploit hardware parallelism - "explicit but unobtrusive"
 > 
 > intention: replace loops for aggregate operations
 > > more concise, readable, composable operations, parallelizable
@@ -418,7 +418,7 @@ _Imperative Programming (Names and Values)_
 	+ Form is _<var_name>_ = _<expression>_
 	+ Expressions can refer to other variables
 	+ Values can therefore be passed from command to command
-	+ Commands may be repated through loops	
+	+ Commands may be repeated through loops	
 
 _Functional Programming (Names and Values)_
 > A name is only ever associated with one value
@@ -439,7 +439,7 @@ No concept of a command, as used in imperative code, therefore no concept of rep
 _Imperative_
 
 values associated with names can be changed
-the order of execution of commands forms a contrat, if it's changed, the behavior of app may change
+the order of execution of commands forms a contract, if it's changed, the behavior of app may change
 
 _Functional_
 
@@ -463,7 +463,7 @@ new values may be associated with the same name through recursion
 
 ##### Functions as Values
 
-lambda expressions allows functions to be trated as values
+lambda expressions allows functions to be treated as values
 make this much simpler than anonymous inner classes
 
 ### Lesson 2.2 - Elements of Stream
@@ -499,10 +499,10 @@ see lesson 2.2 on [Youtube](https://youtu.be/J4clzago_IM)
 
 ##### Stream Terminal Operations
 
-> Papeline is only evaluated when the terminal operations is called
+> Pipeline is only evaluated when the terminal operations is called
 
 - all operations can execute sequentially or in parallel
-- intermediate operatins can be merged
+- intermediate operations can be merged
 - Stream characteristics help identify optimisations
 	+ DISTINCT stream passed to distinct() is a no-op
 
@@ -522,7 +522,7 @@ see lesson 2.3 on [Youtube](https://youtu.be/O9tajXDd9IU)
 
 > by default, a stream produces elements that are objects
 > 
-> sometimes, this is not be best solution
+> sometimes, this is not be the best solution
 
 ```java
 	int highScore = students.stream()
@@ -566,8 +566,8 @@ see lesson 2.4 on [Youtube](https://youtu.be/pbtFL7T_HLw)
 ##### Arrays Class
 - stream()
 	+ An array is a collection of data, so logical to be able to create a stream
-	+ provides a sequencial strema
-	+ overloded methods for different types
+	+ provides a sequencial stream
+	+ overloaded methods for different types
 		* double, int, long and Object
 
 ##### Files Class
@@ -595,9 +595,9 @@ see lesson 2.4 on [Youtube](https://youtu.be/pbtFL7T_HLw)
 - JarFile/ZipFile: stream()
 	+ returns a file stream of contents of the compressed archive
 - BufferedReader: lines()
-	+ returns a steam of strings that are the lines read from the input
+	+ returns a stream of strings that are the lines read from the input
 - Pattern: splitAsStream()
-	+ retunrs a stream of strings of matches of a pattern
+	+ returns a stream of strings of matches of a pattern
 	+ like split(), but returns a stream rather than an array
 - CharSequence
 	+ chars(): chars values as ints for the sequence
@@ -630,7 +630,7 @@ see lesson 2.5 on [Youtube](https://youtu.be/2eIr0U78_gA)
 - stream provide a sequence of elements
 	+ supporting either sequencial or parallel aggregate operations
 - most operations take a parameter that describes its behaviour
-	+ tipically using lambda expressions
+	+ typically using lambda expressions
 	+ must be non-interfering (does not modify the stream)
 	+ typically stateless
 - streams may be changed from sequencial to parallel (and vice-versa)
@@ -686,7 +686,7 @@ see lesson 2.5 on [Youtube](https://youtu.be/2eIr0U78_gA)
 - unordered()
 	+ inherited from BaseStream
 	+ returns a stream that is unordered (used internally)
-	+ can improve efficiency of operatins like distinct() and groupingBy()
+	+ can improve efficiency of operations like distinct() and groupingBy()
 
 ##### Observing Stream Elements
 > as they go past
@@ -710,7 +710,7 @@ see lesson 2.6 on [Youtube](https://youtu.be/4jjXu8A6cuY)
 - generate a explicit result or a side efect
 
 ##### Matching Elements
-- findFirst(Predicat p)
+- findFirst(Predicate p)
 	+ the first element that matches using the give Predicate
 - findAny(Predicate p)
 	+ works the same way as finFirst(), but for a parallel stream
@@ -737,7 +737,7 @@ see lesson 2.6 on [Youtube](https://youtu.be/4jjXu8A6cuY)
 	+ the maximum value element of the stream using the Comparator
 	+ return an Optional, since the stream may be empty
 - min(Comparator c)
-	+ the minimun value element of the stream using the Comparator
+	+ the minimum value element of the stream using the Comparator
 	+ return an Optional, since the stream may be empty
 
 > Primitive Type Streams (IntStream, DoubleStream and LongStream)
@@ -906,7 +906,7 @@ see lesson 3.1 on [Youtube](https://youtu.be/tTiI_ibmpcM)
 - reduction take a stream and reduces it to a single value
 - the way the reduction works is defined by accumulator
 	+ which is a BinaryOperator
-	+ the acumulator is applied successively to the stream elements
+	+ the accumulator is applied successively to the stream elements
 	+ the reduce() method maintains a partial result state
 	+ like a recursive approach, but without the resource overhead
 - requires you to think differently to an imperative, loop based approach
@@ -947,7 +947,7 @@ see lesson 3.1 on [Youtube](https://youtu.be/tTiI_ibmpcM)
 		if ( s.length() > longest.length() )
 			longest = s;
 ```
-- _Simple, but inheritly serial_
+- _Simple, but inherently serial_
 - _Not thread safe due to mutable state_
 - _Not functional_
 
@@ -972,7 +972,7 @@ see lesson 3.1 on [Youtube](https://youtu.be/tTiI_ibmpcM)
 ```
 
 - _Not explicit loop, no mutable state, so we now have a functional solution_
-- _Unfortunaly not a usable one_
+- _Unfortunately not a usable one_
 	+ larger data sets will generate an OutOfMemoryException
 
 *A better Stream Solution*
@@ -982,7 +982,7 @@ see lesson 3.1 on [Youtube](https://youtu.be/tTiI_ibmpcM)
 ```java
 	Optional<T> reduce(BinaryOperation<T> accumulator) 
 ```
-- the key is to find the rigth accumulator
+- the key is to find the right accumulator
 	+ recall the accumulator takes a partial result and the next element, and returns a new partial result
 	+ in essence it does the same as our recursive solution
 	+ without all the stack frames
@@ -999,7 +999,7 @@ see lesson 3.1 on [Youtube](https://youtu.be/tTiI_ibmpcM)
 
 *The Simplest Stream Solution*
 - use a specialised form of max()
-- one that takes a Comparator as a paramenter
+- one that takes a Comparator as a parameter
 ```java
 	Files.lines(input)
 		.max( comparingInt( String::length ) )
@@ -1018,7 +1018,7 @@ see lesson 3.2 on [Youtube](https://youtu.be/bt5MIkrYgzM)
 - use terminal operator to stop processing
 - or use infinite stream infinitely
 
-##### Dealing with the Inderteminate
+##### Dealing with the Indeterminate
 > imperative java
 
 - how to continue processing when we can`t predict for how long?
@@ -1043,7 +1043,7 @@ see lesson 3.2 on [Youtube](https://youtu.be/bt5MIkrYgzM)
 		.findFirst( i -> i > 256 ); //stream terminates when a number os gratter than 256
 ```
 
-> keeping it ifinite
+> keeping it infinite
 
 - sometimes we need to continue to use a stream indefinitely
 - what terminal operation should we use for this?
@@ -1051,11 +1051,11 @@ see lesson 3.2 on [Youtube](https://youtu.be/bt5MIkrYgzM)
 	+ this consumes the element from the stream
 	+ but does not terminate it
 
-> ifinite example
+> infinite example
 
 - reading a temperature from a serial sensor
-	+ converting from farenheit to celcius, removing F
-	+ notifying a listner of changes if registered
+	+ converting from fahrenheit to celcius, removing F
+	+ notifying a listener of changes if registered
 ```java
 	thermalReader.lines()
 		.mapToDouble( s -> 
