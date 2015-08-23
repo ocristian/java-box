@@ -1,6 +1,6 @@
 #JDK 8 MOOC Functional Programming in Java with Lambdas and Streams
 
-Here I'll take some notes about [Lambdas and Streams Introduction](https://apexapps.oracle.com/pls/apex/f?p=44785:141:105593264740337::NO::P141_PAGE_ID,P141_SECTION_ID:250,1807) the online course provided by Simon Ritter @speakjava 
+Here I'll take some notes about [Lambdas and Streams Introduction](https://apexapps.oracle.com/pls/apex/f?p=44785:141:105593264740337::NO::P141_PAGE_ID,P141_SECTION_ID:250,1807) the online course provided by [Simon Ritter](https://github.com/speakjava)
 
 [1. Lambdas](#1-lambdas)
 
