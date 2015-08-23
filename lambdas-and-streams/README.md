@@ -1391,7 +1391,6 @@ see lesson 3.7 on [Youtube](https://youtu.be/QnNySqVZse0)
 
 - need to think functional rather than imperative
 	+ try to stop thinking in loops and using mutable state
-
 - think of how to approach problems usgin recursion
 	+ rather than a explicit loop
 	+ avoid forEach( except for special cases )
