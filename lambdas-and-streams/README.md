@@ -1398,3 +1398,6 @@ see lesson 3.7 on [Youtube](https://youtu.be/QnNySqVZse0)
 - remember, parallel streams always involve more work
 	+ sometimes they complete the work quicker
 
+
+That is all folks! Feel free to share and contribute.
+Thanks!
