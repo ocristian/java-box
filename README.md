@@ -1,2 +1,2 @@
 # java-box
-Just some java experiments
+just some java experiments
