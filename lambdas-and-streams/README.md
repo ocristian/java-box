@@ -901,7 +901,7 @@ good, but now we have the Optional Class
 * [Lesson 3.2 - Finite and Infinite Streams](#lesson-32---finite-and-infinite-streams)
 * [Lesson 3.3 - Avoiding the use of forEach](#lesson-33---avoiding-the-use-of-forEach)
 * [Lesson 3.4 - Using Collectors](#lesson-34---using-collectors)
-* [Lesson 3.5 - Parallel Streams (and when not use them)](#lesson-35---parallel-streams-(-and-when-not-use-them))
+* [Lesson 3.5 - Parallel Streams (and when not use them)](#lesson-35---parallel-streams-and-when-not-use-them)
 * [Lesson 3.6 - Debbuging Lambdas and Streams](#lesson-36---debbuging-lambdas-and-streams)
 * [Lesson 3.7 - Conclusions](#lesson-37---conclusions)
 
