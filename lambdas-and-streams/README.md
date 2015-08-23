@@ -899,6 +899,12 @@ good, but now we have the Optional Class
 
 * [Lesson 3.1 - Understanding and Using Reductions](#lesson-31---understanding-and-using-reductions)
 * [Lesson 3.2 - Finite and Infinite Streams](#lesson-32---finite-and-infinite-streams)
+* [Lesson 3.3 - Avoiding the use of forEach](#lesson-33---avoiding-the-use-of-forEach)
+* [Lesson 3.4 - Using Collectors](#lesson-34---using-collectors)
+* [Lesson 3.5 - Parallel Streams (and when not use them)](#lesson-35---parallel-streams-(-and-when-not-use-them))
+* [Lesson 3.6 - Debbuging Lambdas and Streams](#lesson-36---debbuging-lambdas-and-streams)
+* [Lesson 3.7 - Conclusions](#lesson-37---conclusions)
+
 
 ### Lesson 3.1 - Understanding and Using Reductions
 see lesson 3.1 on [Youtube](https://youtu.be/tTiI_ibmpcM)
@@ -1065,3 +1071,331 @@ see lesson 3.2 on [Youtube](https://youtu.be/bt5MIkrYgzM)
 		.peek( t -> listner.ifPresent( l -> l.temperatureChanged(t) ) )
 		.forEach( t -> currentTemperature.set(t) );	
 ```
+
+### Lesson 3.3 - Avoiding the use of forEach
+see lesson 3.3 on [Youtube](https://youtu.be/WiDWt5TjY4E)
+
+- if you are thinking of using forEach(), stop!
+- can it be replaced with a combination of mapping and reducing?
+- if so, it is unlikely to be right approach to be functional
+- certain situations are valid for using forEach()
+	+ printing values from the stream
+
+##### Using Streams Effectively
+
+> Stop thinking imperatvely
+
+- imperative programming uses loops for repetitive behaviour
+- it also use variables to hold state
+- we can continue to do that in some ways with streams 
+- _THIS IS WRONG_
+
+> still thinking Imperatively
+
+_sum all the values on some list_
+```java
+	List<Transactions> transactions = ....
+
+	LongAdder transactionTotal = new LongAdder(); // designed on Java 8 for frequently updates and reads operations
+
+	transactions.stream()
+		.forEach( t -> transactionTotal.add( t.getValue() ) ); 
+		// transactionTotal.add( t.getValue() ) -- we are modifying state wich is wrong for a functional approach
+
+	long total = transactionTotal.sum();	
+```
+
+> the correct Functional Approach
+
+```java
+	List<Transactions> transactions = ....
+
+	long total = transactions.stream()
+		.mapToLong( t -> t.getValue() ) // create a stream of long values that is passed to the next function
+		.sum(); // use a reduction to create a single result
+```
+
+
+> Legitimate use of forEach, no state being modified
+
+- simplified iteration
+- may be made parallel _if order is not important_
+
+```java
+	List<Transactions> transactions = ....
+
+	transactions.stream()
+		.forEach( t -> t.printClientName() );
+```
+
+### Lesson 3.4 - Using Collectors
+see lesson 3.4 on [Youtube](https://youtu.be/1xWUiMH_rh0)
+
+- a Collector performs a mutable reduction on a stream
+	+ accumulate inputs elements into a mutable result container
+	+ result container can be a List, Map, String etc
+- use the collect() method to terminate the stream
+- Collectors utility class has many methods that can create a Collector
+
+##### Composing Collectors
+
+- several Collectors methods have versions with a downstrea collector
+- allows a second collector to be used
+	+ collectingAndThen()
+	+ groupingBy() / groupingByConcurrent()
+	+ mapping()
+	+ partitioningBy()
+
+##### Collecting into a Collection
+
+- toCollection(Supplier factory)
+	+ adds the elements of the stream to a Collection ( created using factory )
+	+ uses encounter order
+- toList()
+	+ adds the elements of the stream to a List
+- toSet()
+	+ adds the elements of the stream to a Set
+	+ eliminates duplicates	 
+
+##### Collecting to a Map
+
+- toMap( Function keyMapper, Function valueMapper )
+	+ creates a Map from elements of the stream
+	+ key and value produced using provided functions
+	+ use Function.identify() to get the stream element
+
+```java
+	Map<Student, Double> studentScore = students.stream()
+		.collect( toMap( Functions.identify(), student -> getScore( student ) ) );
+```
+
+> handling duplicated keys
+
+
+```java
+	toMap( Function keyMapper, Function valueMapper , BinaryOperator merge);
+```
+
+- the same process as first toMap() method
+	+ but uses BinaryOperator to merge values for duplicated keys
+
+
+```java
+	Map<String, String> occupants = people.strema()
+		.collect( toMap( Person::getAddress, Person::getName, ( x,y ) -> x + "," + y )); //people at the same address are merged into a CSV string
+```
+
+
+##### Grouping results
+
+- groupingBy( Function )
+	+ Groups stream elements using the Function into a Map
+	+ result is Map<K, List<V>>
+
+```java
+	Map m = words.stream()
+		.collect( Collectors.groupingBy( String::length ));
+```
+
+- groupingBy( Function, Collector )
+	+ Groups stream elements using the Function
+	+ a reduction is performed on each group using the downstream Collector
+
+```java
+	Map m = words.stream()
+		.collect( Collectors.groupingBy( String::length, counting() ));
+```
+
+##### Joining String results
+
+- joining()
+	+ collector concatenates input strings
+- joining( delimiter )
+	+ collector concatenates stream using CharSequence delimiter
+
+```java
+	collect( Collectors.joining(",") ); //create CSV
+```
+
+- joining( delimiter, prefix, suffix )
+	+ collector concatenates the prefix, stream strings separated by delimiter and suffix
+
+##### Numeric Collectors
+> also available in Double and Long forms
+
+- averagingInt( toIntFunction )
+	+ averages the results generated by the supplied function
+- summarizingInt( toIntFunction )
+	+ summarises ( count, sum, min, max, average ) results generated by supplied function
+- summingInt( toIntFunction )
+	+ equivalent to a map() then sum()
+- maxBy( Comparator ), minBy( Comparator )
+	+ maximum or minimum value based on Comparator
+
+##### Other Collectors
+
+- reducing( BinaryOperator )
+	+ equivalent Collector to reduce() terminal operation
+	+ only use for multi-level reductions, or downstream collectors
+- partitioningBy( Predicate )
+	+ creates a Map<Boolean, List> containig two groups based on Predicate
+- mapping( Function, Collector )
+	+ adapts a Collector to accpet diferent type elements mapped by the Function
+
+```java
+	Map<City, Set<String>> lastNamesByCity = people.stream()
+		.collect( groupingBy( Person::getCity, mapping( Person::getLasName, toSet() ) ) );
+```
+
+### Lesson 3.5 - Parallel Streams (and when not use them)
+see lesson 3.5 on [Youtube](https://youtu.be/lFNnpfMBiCE)
+
+- streams can be processed sequentially or in parallel
+	+ the whole stream is processed in sequentially or in parallel
+	+ in most cases how the stream is defined will not affect the result
+	+ findFirst(), findAny(), forEach(), forEachOrdered() do
+- don't assume that a parallel stream will return a result faster
+	+ many factors affect performance
+
+##### Serial and Parallel Streams
+
+- Collection stream sources
+	+ stream()
+	+ parallelStream()
+- stream can be made parallel or sequential at any point
+	+ parallel()
+	+ sequential()
+- that last call wins
+	+ whole stream is either sequential or parallel
+- calling concat() with a sequential and parallel stream will produce a parallel stream
+
+##### Parallel Streams
+
+- implemented internally using the fork-join framework
+- will default to as many threads for the pool as the OS reports processors
+	+ which may not be what you want
+
+```java
+	System.setProperty( "java.util.concurrent.ForkJoinPool.common.parallelism", "32767");
+```
+- remember, parallel streams always need more work to process
+	+ but they might finish it more quickly
+
+> considerations
+
+- findFirst() and findAny()
+	+ findAny() is non-deterministic, so better for parallel stream performance
+	+ use findFirst() if a deterministic result is required
+- forEach() and forEachOrdered()
+	+ forEach() is non-deterministic for a parallel stream and ordered data
+	+ use forEachOrdered() if a deterministic result is required
+
+##### When to use Parallel Streams
+> no simple answer
+
+- data set size is important, as is the type of data structure
+	+ ArrayList:		GOOD
+	+ HashSet, TreeSet:	OK
+	+ LinkedList:		BAD
+- operations are also important
+	+ certain operations decompose to parallel tasks better than others 
+	+ filter() and map() are excellent
+	+ sorted() and distinct() do not decompose well
+
+> quantitative considerations
+
+- N = size of the data set
+- Q = cost per element through the stream pipeline
+- N x Q = total cost of pipeline operations
+- the bigger N x Q is the better a parallel stream will perform
+- it is easier to know N than Q , but Q can be estimated
+- if in doubt, profile
+
+### Lesson 3.6 - Debbuging Lambdas and Streams
+see lesson 3.6 on [Youtube](https://youtu.be/krLTMstEYOo)
+
+##### Problems with Debbuging Streams
+
+- Streams provide a high level abstraction
+	+ this is good for making code clear and easy to understand 
+	+ this is bad for debbuging
+		* a lot happens internally in the library code
+		* setting breakpoints is not simple
+		* streams operations are merged to improve efficiency
+
+##### Simple Debbuging
+
+- use peek()
+	+ like the use of print statements
+
+```java
+	List<String> sortedWords = reader.lines()	//lines from file
+		.peek( System.out::println)	// print lines
+		.flatMap( line -> Stream.of( line.split( REGEXP ) ) ) //words from file
+		.map( String::toLowerCase ) //in lower case
+		.distinct() // remove duplicates
+		.sort( (x, y) -> x.length() - y.length() ) // sort by length
+		.collect( Collectors.toList() );	// collect to list
+```
+
+##### Setting a breakpoint
+
+- add a peek() method call between stream operations
+- use Consumer that does nothing if required
+	+ some debbuging tools don't like empty bodies
+```java
+	List<String> sortedWords = reader.lines()	//lines from file
+		.flatMap( line -> Stream.of( line.split( REGEXP ) ) ) //words from file
+		.peek( s -> s)	// set breakpoint here		
+		.map( String::toLowerCase ) //in lower case
+		.distinct() // remove duplicates
+		.sort( (x, y) -> x.length() - y.length() ) // sort by length
+		.collect( Collectors.toList() );	// collect to list
+```
+
+> using a method reference
+
+- lambda expressions do not compile to equivalent inner class
+	+ compiled to invokedynamic call
+	+ implementation decided at runtime
+	+ better chance of optimisation, makes debugging harder
+- solution
+	+ extract the code from a lambda expression into a separete method
+	+ replace the lamba with a method reference for the new method
+	+ set breakpoints on the statements in the new method
+	+ examine program state using debugger
+
+
+### Lesson 3.7 - Conclusions
+see lesson 3.7 on [Youtube](https://youtu.be/QnNySqVZse0)
+
+##### Lambda Expressions
+
+- give us a simple way to _define behaviour_
+	+ can be assigned to a variable or passed as a parameter
+- can be used wherever the type is a *functional interface*
+	+ one that *has only one abstract method*
+	+ the lambda expression provides an implementation of the abstract method
+
+##### Stream API
+
+- pipeline of operations to process collections of data
+	+ multiple sources, not just from the Collections API
+	+ cab be processed sequentially or in parallel
+- sources, intermediate and terminal operations
+- behaviour of intermediate and terminal operations often defined using lambda expressions
+- terminal operations often return a Optional 
+- we can now use a functional style of programming in java
+
+##### Lambda and Streams: Think Differently
+
+- need to think functional rather than imperative
+	+ try to stop thinking in loops and using mutable state
+
+- think of how to approach problems usgin recursion
+	+ rather than a explicit loop
+	+ avoid forEach( except for special cases )
+- infinite streams don't need to be infinite
+- remember, parallel streams always involve more work
+	+ sometimes they complete the work quicker
+
