@@ -210,9 +210,9 @@ Useful static method for composing. Ex.: compose and andThen
 - T apply(T a, T b)
 
 	(String a, String x) -> {
-		if ( x.length() > y.length() ) 
-			return x;
-		return y;	
+		if ( a.length() > x.length() ) 
+			return a;
+		return x;	
 	}
 ```
 
