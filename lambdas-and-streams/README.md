@@ -234,10 +234,11 @@ useful default and static methods for combination
 see lesson 1.5 on [Youtube](https://youtu.be/CURWqa7KWDk)
 
 #####Method References
-let us a reuse a method as a lambda expression
-Format: target_reference::method_name
-Three kinds of methods reference
 
+let us a reuse a method as a lambda expression
+Format: _*target_reference::method_name*_
+
+Three kinds of methods reference:
 - Static method
 - Instance method of arbitrary method
 - Instance method of an existing object 
