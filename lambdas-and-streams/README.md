@@ -236,6 +236,7 @@ see lesson 1.5 on [Youtube](https://youtu.be/CURWqa7KWDk)
 #####Method References
 
 let us a reuse a method as a lambda expression
+
 Format: _*target_reference::method_name*_
 
 Three kinds of methods reference:
