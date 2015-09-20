@@ -317,7 +317,7 @@ Which are not final, or effectively final
 
 		public void process(){
 			DataSet myData = myFactory.getDataSet();
-			dataSet.forEach( d -> d.use( currentValue++ ) );
+			myData.forEach( d -> d.use( currentValue++ ) );
 		}
 	}
 ```
@@ -616,7 +616,7 @@ see lesson 2.4 on [Youtube](https://youtu.be/pbtFL7T_HLw)
 - of(T... values)
 	+ a stream that consists of the specified values
 - range(int, int), rangeClosed(int, int)
-	+ a stream from a star to an end value (exclusive or inclusive)
+	+ a stream from a start to an end value (exclusive or inclusive)
 - generate(IntSupplier), iterate(int, IntUnaryOperator)
 	+ an infinite stream created by a given Supplier
 	+ iterate() uses seed to start the stream
@@ -727,7 +727,7 @@ see lesson 2.6 on [Youtube](https://youtu.be/4jjXu8A6cuY)
 - collector(Collector c)
 	+ performs a mutable reduction on the stream
 - toArray()
-	+ returns an array containing the  elements of the stream
+	+ returns an array containing the elements of the stream
 
 ##### Numerical Results
 
@@ -774,6 +774,7 @@ see lesson 2.7 on [Youtube](https://youtu.be/HwxFhHsGneo)
 ```java
 	String direction = gpsData.getPosition().getLatitude().getDirection();
 ```
+
 _And if gpsData or gpsData.getPosition() or gpsData.getLatitude() return a null?_
 
 _pLá!!!!_ NullPointerExceptions for you!
@@ -889,7 +890,7 @@ good, but now we have the Optional Class
 
 	String direction = Optional
 		.ofNullable(gpsData) // reference could be null
-		.flatmap(GPSData::getPosition) //return an Optional
+		.flatMap(GPSData::getPosition) //return an Optional
 		.flatMap(Position::getLatitude)	//return an Optional
 		.map(Latitude::getDirection) //returns a String
 		.orElse("None"); // if is null, return None otherwise the value
@@ -1141,7 +1142,7 @@ see lesson 3.4 on [Youtube](https://youtu.be/1xWUiMH_rh0)
 
 ##### Composing Collectors
 
-- several Collectors methods have versions with a downstrea collector
+- several Collectors methods have versions with a downstream collector
 - allows a second collector to be used
 	+ collectingAndThen()
 	+ groupingBy() / groupingByConcurrent()
@@ -1183,8 +1184,8 @@ see lesson 3.4 on [Youtube](https://youtu.be/1xWUiMH_rh0)
 
 
 ```java
-	Map<String, String> occupants = people.strema()
-		.collect( toMap( Person::getAddress, Person::getName, ( x,y ) -> x + "," + y )); //people at the same address are merged into a CSV string
+	Map<String, String> occupants = people.stream()
+		.collect( toMap( Person::getAddress, Person::getName, ( x, y ) -> x + "," + y )); //people at the same address are merged into a CSV string
 ```
 
 
