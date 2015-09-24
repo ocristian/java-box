@@ -1311,7 +1311,7 @@ see lesson 3.5 on [Youtube](https://youtu.be/lFNnpfMBiCE)
 - Q = cost per element through the stream pipeline
 - N x Q = total cost of pipeline operations
 - the bigger N x Q is the better a parallel stream will perform
-- it is easier to know N than Q , but Q can be estimated
+- it is easier to know N than Q, but Q can be estimated
 - if in doubt, profile
 
 ### Lesson 3.6 - Debbuging Lambdas and Streams
