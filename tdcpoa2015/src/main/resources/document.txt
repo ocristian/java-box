@@ -1,0 +1,7 @@
+01HEADERARQUIVO______________
+0201HEADERLOTE_______________
+99DETALHE____________________
+99DETALHE____________________
+99DETALHE____________________
+0201TRAILERLOTE______________
+0201TRAILERARQUIVO___________

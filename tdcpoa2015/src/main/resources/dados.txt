@@ -1,0 +1,13 @@
+
+Classificação
+	http://globoesporte.globo.com/servico/esportes_campeonato/classificacao/resumida/futebol/futebol_de_campo/profissional/campeonato-brasileiro/brasileirao-2015.json
+
+
+Classificacao
+http://centraldejogos.lancenet.com.br/api/classificacao/brasileiro-serie-a-2015/
+
+Partidas
+	http://centraldejogos.lancenet.com.br/api/partidas/brasileiro-serie-a-2015/
+
+Artilharia
+	http://centraldejogos.lancenet.com.br/api/artilharia/brasileiro-serie-a-2015/		
