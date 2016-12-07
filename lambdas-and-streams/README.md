@@ -138,7 +138,7 @@ and:
 ```java
 Callable c = () -> process();
 ```
-- Methos parameter
+- Method parameter
 ```java	
 new Thread( () -> process() ).start();
 ```
