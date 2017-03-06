@@ -55,7 +55,6 @@ see lesson 1.2 on [Youtube](https://youtu.be/DD5IKXx4ZPk)
 - do not need braces
 - do not need an explicit return statement
 
-```java
 () -> System.out.println("Lambda in single line")
 
 x -> x + 10
